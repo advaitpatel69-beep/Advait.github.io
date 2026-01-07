@@ -1,99 +1,147 @@
-/* Global */
-body {
-  font-family: Arial, Helvetica, sans-serif;
+/* ===== Global Reset ===== */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: #f1f5f9;
-  color: #111827;
-  line-height: 1.6;
 }
 
-/* Header */
+/* ===== Body ===== */
+body {
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  background: #f1f5f9;
+  color: #1f2937;
+  line-height: 1.7;
+}
+
+/* ===== Header ===== */
 header {
-  background-color: #0f172a;
-  color: #ffffff;
-  padding: 20px;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+  padding: 25px 15px;
   text-align: center;
 }
 
 header h1 {
-  margin-bottom: 5px;
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 
-header p {
-  margin-top: 0;
-  color: #cbd5f5;
-}
-
-/* Navigation */
+/* ===== Navigation ===== */
 nav {
   margin-top: 10px;
 }
 
 nav a {
-  color: #93c5fd;
+  color: #e0e7ff;
   text-decoration: none;
   margin: 0 12px;
-  font-weight: bold;
+  font-weight: 600;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  border-bottom: 2px solid #e0e7ff;
 }
 
-/* Main Content */
+/* ===== Main Layout ===== */
 main {
   max-width: 900px;
-  margin: auto;
-  padding: 20px;
+  margin: 30px auto;
+  padding: 0 15px;
 }
 
-/* Sections */
+/* ===== Sections / Cards ===== */
 section {
-  background: #ffffff;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
+  background: white;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
-/* Lists */
+/* ===== Headings ===== */
+h1, h2, h3 {
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+}
+
+/* ===== Text ===== */
+p {
+  margin-bottom: 12px;
+}
+
+/* ===== Lists ===== */
 ul {
   padding-left: 20px;
+  margin-top: 10px;
 }
 
 li {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
-/* Buttons */
+/* ===== Inputs ===== */
+input {
+  width: 100%;
+  max-width: 320px;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #cbd5f5;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* ===== Buttons ===== */
 button {
-  background-color: #2563eb;
+  display: inline-block;
+  padding: 10px 18px;
+  background: #2563eb;
   color: white;
   border: none;
-  padding: 10px 16px;
-  font-size: 16px;
-  border-radius: 6px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
 
 button:hover {
-  background-color: #1d4ed8;
+  background: #1e40af;
+  transform: translateY(-1px);
 }
 
-/* Inputs */
-input {
-  padding: 8px;
-  font-size: 16px;
-  margin: 5px 0;
-  width: 100%;
-  max-width: 300px;
+/* ===== Result Text ===== */
+#result {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1d4ed8;
 }
 
-/* Footer */
+/* ===== Links ===== */
+a {
+  color: #2563eb;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Footer ===== */
 footer {
-  background-color: #e5e7eb;
+  background: #111827;
+  color: #e5e7eb;
   text-align: center;
-  padding: 12px;
-  font-size: 14px;
+  padding: 15px;
+  font-size: 0.9rem;
   }
-  
