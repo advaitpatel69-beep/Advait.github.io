@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Percentage Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Percentage Calculator</h1>
+  <p>Calculate percentage easily</p>
+</header>
+
+<main>
+  <p>Enter obtained marks and total marks:</p>
+
+  <input type="number" id="obtained" placeholder="Obtained Marks">
+  <br><br>
+  <input type="number" id="total" placeholder="Total Marks">
+  <br><br>
+
+  <button onclick="calculate()">Calculate</button>
+
+  <h2 id="result"></h2>
+</main>
+
+<footer>
+  <p>
+    <a href="index.html">Home</a> |
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </p>
+</footer>
+
+<script>
+  function calculate() {
+    var obtained = document.getElementById("obtained").value;
+    var total = document.getElementById("total").value;
+
+    if (obtained === "" || total === "" || total == 0) {
+      document.getElementById("result").innerText = "Please enter valid numbers";
+      return;
+    }
+
+    var percentage = (obtained / total) * 100;
+    document.getElementById("result").innerText =
+      "Percentage: " + percentage.toFixed(2) + "%";
+  }
+</script>
+
+</body>
+</html>
