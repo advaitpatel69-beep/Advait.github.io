@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CGPA Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>CGPA Calculator</h1>
+  <p>Calculate your CGPA easily</p>
+</header>
+
+<main>
+  <p>Enter your total grade points and number of subjects:</p>
+
+  <input type="number" id="points" placeholder="Total Grade Points">
+  <br><br>
+  <input type="number" id="subjects" placeholder="Number of Subjects">
+  <br><br>
+
+  <button onclick="calculateCGPA()">Calculate CGPA</button>
+
+  <h2 id="result"></h2>
+
+  <section>
+    <h3>How to Calculate CGPA</h3>
+    <p>
+      CGPA is calculated by dividing the total grade points by the
+      number of subjects.
+    </p>
+    <p>
+      CGPA Formula:
+      <br>
+      <strong>Total Grade Points / Number of Subjects</strong>
+    </p>
+    <p>
+      This CGPA calculator helps students quickly calculate their
+      academic performance.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <p>
+    <a href="index.html">Home</a> |
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </p>
+</footer>
+
+<script>
+  function calculateCGPA() {
+    var points = document.getElementById("points").value;
+    var subjects = document.getElementById("subjects").value;
+
+    if (points === "" || subjects === "" || subjects == 0) {
+      document.getElementById("result").innerText = "Please enter valid numbers";
+      return;
+    }
+
+    var cgpa = points / subjects;
+    document.getElementById("result").innerText =
+      "Your CGPA is: " + cgpa.toFixed(2);
+  }
+</script>
+
+</body>
+</html>
