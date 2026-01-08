@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://advaitpatel69-beep.github.io/Advait.github.io/sitemap.xml
