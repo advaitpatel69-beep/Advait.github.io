@@ -5,74 +5,97 @@
   padding: 0;
 }
 
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 /* ===== Body ===== */
 body {
-  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-  background: #f1f5f9;
-  color: #1f2937;
-  line-height: 1.7;
+  /* Updated for a lighter, professional look */
+  font-family: "Inter", "Segoe UI", Tahoma, Arial, sans-serif;
+  background: #f8f9fa; /* Very light, professional background */
+  color: #343a40; /* Darker text for readability */
+  line-height: 1.6;
 }
 
-/* ===== Header ===== */
+/* ===== Header - Updated for professional, clean look ===== */
 header {
-  background: linear-gradient(135deg, #2563eb, #1e40af);
-  color: white;
-  padding: 25px 15px;
+  width: 100%;
+  /* Professional blue gradient */
+  background: linear-gradient(135deg, #0056b3, #007bff); 
+  color: white; /* Ensure text is white */
+  padding: 20px 0;
   text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+header > * {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 15px; /* Add padding for smaller screens */
+}
+
+/* Updated H1/P within Header */
 header h1 {
   font-size: 2rem;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
-/* ===== Navigation ===== */
+header p {
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+/* ===== Navigation - Cleaned up and integrated into header look ===== */
 nav {
-  margin-top: 10px;
+  margin-top: 15px; /* Increased margin for separation */
 }
 
 nav a {
-  color: #e0e7ff;
+  color: #cce5ff; /* Lighter blue for subtle contrast */
   text-decoration: none;
-  margin: 0 12px;
-  font-weight: 600;
-  padding-bottom: 3px;
+  margin: 0 15px;
+  font-weight: 500; /* Slightly reduced font-weight */
+  padding: 5px 0;
   border-bottom: 2px solid transparent;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 nav a:hover {
-  border-bottom: 2px solid #e0e7ff;
+  border-bottom: 2px solid #ffffff; /* White underline on hover */
+  color: #ffffff;
 }
 
-/* ===== Main Layout ===== */
+/* ===== Main Layout (Tool Wrapper) - Kept simple for tool container focus ===== */
 main {
   max-width: 900px;
-  margin: 30px auto;
+  margin: 40px auto;
   padding: 0 15px;
 }
 
-/* ===== Sections / Cards ===== */
+/* Default sections/cards - Not used heavily here, but kept for consistency */
 section {
   background: white;
   padding: 25px;
   margin-bottom: 25px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 /* ===== Headings ===== */
 h1, h2, h3 {
-  color: #111827;
+  color: #004085; /* Dark blue for main content headings */
   margin-bottom: 12px;
 }
 
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 h3 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 /* ===== Text ===== */
@@ -90,25 +113,33 @@ li {
   margin-bottom: 6px;
 }
 
-/* ===== Inputs ===== */
-input {
+/* ===== Inputs & Selects ===== */
+input, select {
   width: 100%;
   max-width: 320px;
-  padding: 10px;
+  padding: 10px 12px;
   margin: 8px 0;
-  border: 1px solid #cbd5f5;
-  border-radius: 8px;
+  border: 1px solid #ced4da; /* Light border */
+  border-radius: 6px;
   font-size: 1rem;
+  transition: border-color 0.2s;
 }
 
-/* ===== Buttons ===== */
+input:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+
+/* ===== Buttons - Focused on primary blue theme ===== */
 button {
   display: inline-block;
   padding: 10px 18px;
-  background: #2563eb;
+  background: #007bff; /* Primary Blue */
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -116,66 +147,66 @@ button {
 }
 
 button:hover {
-  background: #1e40af;
+  background: #0056b3; /* Darker blue on hover */
   transform: translateY(-1px);
 }
 
-/* ===== Result Text ===== */
-#result {
-  margin-top: 15px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #1d4ed8;
+/* Tool-specific styling from old style.css for container wrap */
+.tool-wrapper {
+  padding: 40px 15px;
+  background: #f8f9fa; /* Match body background */
+}
+
+/* Internal Links section - Updated for professional contrast */
+.internal-links {
+  max-width: 520px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #e9ecef; /* Light gray background */
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+}
+
+.internal-links h2 {
+    color: #0056b3;
+    border-bottom: 1px solid #ced4da;
+    padding-bottom: 10px;
 }
 
 /* ===== Links ===== */
 a {
-  color: #2563eb;
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
 a:hover {
+  color: #0056b3;
   text-decoration: underline;
 }
 
-/* ===== Footer ===== */
+/* ===== Footer - Updated for professional dark contrast ===== */
 footer {
-  background: #111827;
-  color: #e5e7eb;
-  text-align: center;
-  padding: 15px;
-  font-size: 0.9rem;
-  }
-
-.tool-wrapper {
-  padding: 40px 15px;
-  background: #0f172a;
+  width: 100%;
+  /* Dark slate background for professionalism */
+  background: #343a40;
+  color: #f8f9fa; /* Light text */
+  padding: 20px 0;
+  margin-top: 40px; /* Space from main content */
 }
 
-.tool-container {
-  max-width: 520px;
+footer > * {
+  max-width: 1200px;
   margin: auto;
+  text-align: center;
+  padding: 0 15px;
 }
 
-.internal-links {
-  max-width: 520px;
-  margin: 30px auto;
-  padding: 15px;
-  background: #111827;
-  border-radius: 8px;
+footer a {
+  color: #adb5bd; /* Subtle link color */
 }
 
-/* FORCE center calculator on desktop */
-.tool-container {
-  display: flex;
-  justify-content: center;
+footer a:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
-
-/* Ensure calculator card stays centered */
-.tool-container > * {
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-
-
-
