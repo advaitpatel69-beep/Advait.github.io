@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Simple & Compound Interest Calculator for Students</title>
     <meta name="description" content="Free simple and compound interest calculator for students. Calculate SI, CI, total amount and interest with formulas and examples.">
     <meta name="robots" content="index, follow">
@@ -20,14 +21,15 @@
     <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <style>
+        /* UPDATED STYLES FOR PROFESSIONAL LOOK */
         :root {
-            --primary: #059669; /* Green for finance */
-            --primary-hover: #047857;
-            --bg: #f3f4f6;
+            --primary: #198754; /* A solid, professional financial green */
+            --primary-hover: #157347;
+            --bg: #f8f9fa; /* Matches new body background from style.css */
             --card: #ffffff;
-            --text: #1f2937;
-            --border: #d1d5db;
-            --breakdown-bg: #ecfdf5; /* Light green for breakdown */
+            --text: #212529; /* Darker text */
+            --border: #dee2e6;
+            --breakdown-bg: #e2f4ea; /* Light green for breakdown */
         }
 
         body {
@@ -40,7 +42,8 @@
             max-width: 600px;
             background: var(--card);
             border-radius: 12px;
-            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+            /* More defined, professional shadow */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); 
             overflow: hidden;
         }
 
@@ -48,7 +51,8 @@
         .header {
             text-align: center;
             padding: 2rem 1rem 1rem;
-            background-color: var(--primary);
+            /* Use the professional primary color */
+            background-color: var(--primary); 
             color: white;
         }
         
@@ -56,7 +60,7 @@
         .tabs {
             display: flex;
             border-bottom: 1px solid var(--border);
-            background: #f9fafb;
+            background: #f1f3f5; /* Light gray tab bar background */
         }
 
         .tab-btn {
@@ -66,29 +70,30 @@
             background: transparent;
             font-size: 1rem;
             font-weight: 600;
-            color: #6b7280;
+            color: #6c757d; /* Muted tab text color */
             cursor: pointer;
             transition: all 0.2s;
         }
 
-        .tab-btn:hover { background: #e5e7eb; color: var(--primary); }
+        .tab-btn:hover { background: #e9ecef; color: var(--primary); }
         
         .tab-btn.active {
             border-bottom: 3px solid var(--primary);
             color: var(--primary);
             background: white;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05); /* Subtle lift effect */
         }
 
         /* INPUT AREA */
         .input-wrapper { padding: 2rem; }
         
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 18px; /* Slightly more spacing */
         }
 
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             font-weight: 600;
             color: var(--text);
         }
@@ -102,10 +107,9 @@
             flex-grow: 1;
         }
         .input-with-select select {
-            width: 120px; /* Fixed width for the unit selector */
+            width: 120px;
             flex-shrink: 0;
         }
-        /* Style for the standalone currency selector */
         #currencySelector {
             width: 100%;
         }
@@ -118,11 +122,18 @@
             border-radius: 6px;
             box-sizing: border-box;
             font-size: 1rem;
+            /* Added focus styles for professionalism */
+            transition: border-color 0.2s;
+        }
+        input[type="number"]:focus, select:focus {
+            border-color: var(--primary);
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
         }
 
         /* ACTIONS & ERROR */
         .main-actions {
-            margin-top: 25px;
+            margin-top: 30px; /* Increased margin */
             display: flex;
             gap: 10px;
         }
@@ -134,17 +145,21 @@
             font-weight: bold;
             cursor: pointer;
             flex-grow: 1;
-            font-size: 1rem;
+            font-size: 1.1rem; /* Slightly larger button text */
             background: var(--primary);
             color: white;
+            transition: background 0.2s, transform 0.1s;
         }
-        .btn-calc:hover { background: var(--primary-hover); }
+        .btn-calc:hover { 
+            background: var(--primary-hover); 
+            transform: translateY(-1px);
+        }
 
-        .error { color: #dc2626; text-align: center; margin-top: 15px; display: none; font-weight: bold;}
+        .error { color: #dc3545; text-align: center; margin-top: 15px; display: none; font-weight: bold;}
 
         /* OUTPUT RESULTS */
         .results-section {
-            background: #f9fafb;
+            background: #f1f3f5; /* Light gray results background */
             border-top: 1px solid var(--border);
             padding: 2rem;
             display: none;
@@ -156,8 +171,8 @@
             border: 2px solid var(--primary);
             border-radius: 8px;
             text-align: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
 
         .summary-card h3 { 
@@ -167,22 +182,31 @@
         }
 
         .summary-card .val {
-            font-size: 2.2rem;
+            font-size: 2.5rem; /* Larger result value */
             font-weight: 700;
             color: var(--text);
             display: block;
         }
         
+        /* Interest specific summary card - secondary color */
+        .summary-card[style*="border-color:#f59e0b"] {
+            border-color: #ffc107 !important; /* Professional yellow/orange for contrast */
+            background-color: #fff8e1 !important;
+        }
+        .summary-card[style*="border-color:#f59e0b"] .val {
+            color: #ffc107 !important;
+        }
+        
         /* BREAKDOWN SECTION */
         .breakdown-section {
-            margin-top: 2rem;
+            margin-top: 2.5rem;
         }
         
         .breakdown-section h2 { 
-            color: var(--primary); 
-            font-size: 1.3rem; 
-            border-bottom: 2px solid var(--primary); 
-            padding-bottom: 8px; 
+            color: var(--primary-hover); 
+            font-size: 1.4rem; 
+            border-bottom: 2px solid var(--border); 
+            padding-bottom: 10px; 
             margin-top: 0;
         }
         
@@ -195,41 +219,43 @@
         }
         
         .math-output { 
-            padding: 10px; 
-            background: white; 
+            padding: 12px; 
+            background: #ffffff; 
             border: 1px solid var(--border); 
             border-radius: 4px; 
             overflow-x: auto; 
-            margin-top: 10px; 
+            margin-top: 12px; 
+            font-size: 0.95rem; /* Slightly smaller for formulas */
         }
 
         /* EDUCATION SECTION STYLES */
         .education-section {
             margin-top: 30px;
-            padding: 20px;
+            padding: 25px;
             background: #fff;
             border: 1px solid var(--border);
             border-radius: 8px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.03); /* Subtle inner shadow */
         }
         .education-section h3 {
-            color: var(--primary-hover);
-            font-size: 1.2rem;
-            border-bottom: 1px dashed var(--border);
-            padding-bottom: 5px;
+            color: #0d6efd; /* Use a secondary blue for education headings */
+            font-size: 1.3rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
         }
         .education-section p {
             margin-bottom: 15px;
             line-height: 1.6;
         }
         .term-definition {
-            font-weight: 600;
-            color: var(--text);
+            font-weight: 700;
+            color: var(--primary); /* Highlight terms with primary color */
             display: block;
-            margin-top: 10px;
+            margin-top: 15px;
         }
         .term-definition em {
             font-weight: normal;
-            color: #6b7280;
+            color: #6c757d;
         }
 
     </style>
@@ -408,6 +434,16 @@
     <li><a href="index.html">All Student Tools</a></li>
   </ul>
 </section>
+
+
+ <footer>
+  <p>© 2026 Student Helper Tools</p>
+  <p>
+    <a href="about.html">About</a> |
+    <a href="privacy-policy.html">Privacy Policy</a> |
+    <a href="contact.html">Contact</a>
+  </p>
+</footer>
 
 <script>
     let currentMode = 'simple';
@@ -685,16 +721,7 @@
 
 </script>
 
-    <footer>
-  <p>© 2026 Student Helper Tools</p>
-  <p>
-    <a href="about.html">About</a> |
-    <a href="privacy-policy.html">Privacy Policy</a> |
-    <a href="contact.html">Contact</a>
-  </p>
-</footer>
+   
 
 </body>
 </html>
-
-
