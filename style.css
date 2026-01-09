@@ -145,3 +145,25 @@ footer {
   padding: 15px;
   font-size: 0.9rem;
   }
+
+.tool-wrapper {
+  padding: 40px 15px;
+  background: #0f172a;
+}
+
+.tool-container {
+  max-width: 520px;
+  margin: auto;
+}
+
+.internal-links {
+  max-width: 520px;
+  margin: 30px auto;
+  padding: 15px;
+  background: #111827;
+  border-radius: 8px;
+}
+
+
+
+
