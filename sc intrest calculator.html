@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple & Compound Interest Calculator (INR/USD)</title>
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']]
+            },
+            // Ensuring the engine is set for older systems
+            "HTML-CSS": { availableFonts: ["TeX"] }
+        });
+    </script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <style>
+        :root {
+            --primary: #059669; /* Green for finance */
+            --primary-hover: #047857;
+            --bg: #f3f4f6;
+            --card: #ffffff;
+            --text: #1f2937;
+            --border: #d1d5db;
+            --breakdown-bg: #ecfdf5; /* Light green for breakdown */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* HEADER & TABS */
+        .header {
+            text-align: center;
+            padding: 2rem 1rem 1rem;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        h1 { margin: 0 0 5px 0; font-size: 1.8rem; }
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+            background: #f9fafb;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover { background: #e5e7eb; color: var(--primary); }
+        
+        .tab-btn.active {
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+            background: white;
+        }
+
+        /* INPUT AREA */
+        .input-wrapper { padding: 2rem; }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        /* Group for Time/Currency Input and Selector */
+        .input-with-select {
+            display: flex;
+            gap: 10px;
+        }
+        .input-with-select input[type="number"] {
+            flex-grow: 1;
+        }
+        .input-with-select select {
+            width: 120px; /* Fixed width for the unit selector */
+            flex-shrink: 0;
+        }
+        /* Style for the standalone currency selector */
+        #currencySelector {
+            width: 100%;
+        }
+
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        /* ACTIONS & ERROR */
+        .main-actions {
+            margin-top: 25px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-calc {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            flex-grow: 1;
+            font-size: 1rem;
+            background: var(--primary);
+            color: white;
+        }
+        .btn-calc:hover { background: var(--primary-hover); }
+
+        .error { color: #dc2626; text-align: center; margin-top: 15px; display: none; font-weight: bold;}
+
+        /* OUTPUT RESULTS */
+        .results-section {
+            background: #f9fafb;
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            display: none;
+        }
+        
+        .summary-card {
+            padding: 1.5rem;
+            background: var(--card);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .summary-card h3 { 
+            margin-top: 0; 
+            color: var(--primary); 
+            font-size: 1.1rem;
+        }
+
+        .summary-card .val {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text);
+            display: block;
+        }
+        
+        /* BREAKDOWN SECTION */
+        .breakdown-section {
+            margin-top: 2rem;
+        }
+        
+        .breakdown-section h2 { 
+            color: var(--primary); 
+            font-size: 1.3rem; 
+            border-bottom: 2px solid var(--primary); 
+            padding-bottom: 8px; 
+            margin-top: 0;
+        }
+        
+        .breakdown-item { 
+            margin-bottom: 20px; 
+            padding: 15px; 
+            background: var(--breakdown-bg); 
+            border-left: 5px solid var(--primary); 
+            border-radius: 6px;
+        }
+        
+        .math-output { 
+            padding: 10px; 
+            background: white; 
+            border: 1px solid var(--border); 
+            border-radius: 4px; 
+            overflow-x: auto; 
+            margin-top: 10px; 
+        }
+
+        /* EDUCATION SECTION STYLES */
+        .education-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+        .education-section h3 {
+            color: var(--primary-hover);
+            font-size: 1.2rem;
+            border-bottom: 1px dashed var(--border);
+            padding-bottom: 5px;
+        }
+        .education-section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .term-definition {
+            font-weight: 600;
+            color: var(--text);
+            display: block;
+            margin-top: 10px;
+        }
+        .term-definition em {
+            font-weight: normal;
+            color: #6b7280;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>💲 Interest Calculator</h1>
+        <p style="margin:0; font-size: 0.9rem;">Calculate Simple (SI) and Compound (CI) Interest</p>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchMode('simple')">Simple Interest</button>
+        <button class="tab-btn" onclick="switchMode('compound')">Compound Interest</button>
+    </div>
+
+    <div class="input-wrapper">
+
+        <div class="form-group">
+            <label for="currencySelector">Currency:</label>
+            <select id="currencySelector" onchange="resetResults()">
+                <option value="INR" data-symbol="₹" data-latex="\\text{₹}" selected>Indian Rupee (₹)</option>
+                <option value="USD" data-symbol="$" data-latex="\\$ ">US Dollar ($)</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="principal">Principal Amount (P):</label>
+            <input type="number" id="principal" value="10000" min="0.01" step="0.01">
+        </div>
+
+        <div class="form-group">
+            <label for="rate">Annual Interest Rate (R) %:</label>
+            <input type="number" id="rate" value="7.5" min="0.01" step="0.01">
+        </div>
+
+        <div class="form-group">
+            <label for="timeValue">Time (T):</label>
+            <div class="input-with-select">
+                <input type="number" id="timeValue" value="5" min="1" step="1">
+                <select id="timeUnit" onchange="updateTimeInputAttributes()">
+                    <option value="years" selected>Years</option>
+                    <option value="months">Months</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" id="compoundingFrequencyGroup" style="display:none;">
+            <label for="frequency">Compounding Frequency (n):</label>
+            <select id="frequency">
+                <option value="1">Annually (n=1)</option>
+                <option value="2">Semi-annually (n=2)</option>
+                <option value="4">Quarterly (n=4)</option>
+                <option value="12" selected>Monthly (n=12)</option>
+                <option value="365">Daily (n=365)</option>
+            </select>
+        </div>
+
+        <div class="error" id="errorMsg"></div>
+
+        <div class="main-actions">
+            <button class="btn-calc" onclick="calculateInterest()">Calculate</button>
+        </div>
+    </div>
+
+    <div id="results" class="results-section">
+        
+        <div class="summary-card">
+            <h3>Total Future Value (Amount A)</h3>
+            <span class="val" id="resAmount">-</span>
+        </div>
+        
+        <div class="summary-card" style="border-color:#f59e0b; background-color:#fffbeb;">
+            <h3>Total Interest Earned (<span id="interestType">SI</span>)</h3>
+            <span class="val" id="resInterest" style="color:#f59e0b;">-</span>
+        </div>
+
+        <div class="breakdown-section">
+            <h2>Calculation Steps</h2>
+            <div id="breakdownContent">
+                </div>
+        </div>
+        
+        <div class="education-section">
+            <h2>Educational Overview</h2>
+            
+            <h3>What is Interest?</h3>
+            <p>Interest is the cost of borrowing money or the reward for lending money. It is almost always expressed as a percentage of the principal over a set period (usually a year).</p>
+            
+            <h3>Simple Interest (SI)</h3>
+            <p>Simple interest is calculated only on the <strong>initial principal amount</strong> for the entire duration. The interest earned in the first year is the same as the interest earned in the final year. This type of interest is often used for short-term loans or simple debt calculations.</p>
+            <p class="term-definition">Example:</p>
+            <p>If you deposit 1000 at 5% Simple Interest: You earn 50 every year. After 5 years, you earn $50 \times 5 = $250 interest total.</p>
+            
+            <h3>Compound Interest (CI)</h3>
+            <p>Compound interest is calculated on the <strong>principal amount plus any accumulated interest</strong> from previous periods. This is often called "interest on interest." It is the most common form of interest for savings accounts, mortgages, and long-term investments.</p>
+            <p class="term-definition">Example:</p>
+            <p>If you deposit $1000 at 5% Compound Interest (annual compounding):</p>
+            <ul>
+                <li><strong>Year 1:</strong> Interest is 50. New Balance: 1050.</li>
+                <li><strong>Year 2:</strong> Interest is 5% of 1050 = 52.50. New Balance: $1102.50.</li>
+            </ul>
+            <p>Because the interest earned in Year 1 was added to the principal, you earned more interest in Year 2. This creates faster growth over time. </p>
+
+            <h3>Related Terms Explained</h3>
+            <ul>
+                <li><span class="term-definition">Principal (P):</span> The initial sum of money borrowed or invested.</li>
+                <li><span class="term-definition">Rate (R or r):</span> The annual percentage rate at which interest is charged or paid. (We use $r$ as the decimal form $R/100$ in the formulas).</li>
+                <li><span class="term-definition">Time (T or t):</span> The duration for which the money is borrowed or invested, <strong>always expressed in years</strong> for the final calculation.</li>
+                <li><span class="term-definition">Amount (A):</span> The total final value, calculated as $A = P + \text{Interest}$.</li>
+                <li><span class="term-definition">Compounding Frequency (n):</span> (Only for CI) The number of times the interest is calculated and added back to the principal within one year. (e.g., Monthly $n=12$, Quarterly $n=4$).</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentMode = 'simple';
+
+    // Function to get the current currency symbols
+    function getCurrency() {
+        const selector = document.getElementById('currencySelector');
+        const selectedOption = selector.options[selector.selectedIndex];
+        return {
+            symbol: selectedOption.getAttribute('data-symbol'),
+            latex: selectedOption.getAttribute('data-latex')
+        };
+    }
+    
+    // Helper function to format a number as a clean string for LaTeX with 4 decimal places
+    const fmtLatex = n => Number(n).toFixed(4).toString();
+
+    // Helper function for currency formatting (for HTML display)
+    const formatCurrency = amount => {
+        const currency = getCurrency();
+        return `${currency.symbol}${Number(amount).toFixed(2)}`;
+    };
+
+    function resetResults() {
+        document.getElementById('results').style.display = 'none';
+        document.getElementById('errorMsg').style.display = 'none';
+    }
+
+    // Updates min/step values when switching between years/months
+    function updateTimeInputAttributes() {
+        const timeInput = document.getElementById('timeValue');
+        const timeUnit = document.getElementById('timeUnit').value;
+
+        if (timeUnit === 'months') {
+            timeInput.setAttribute('min', '1');
+            timeInput.setAttribute('step', '1');
+            timeInput.value = '60'; // Default to 60 months (5 years)
+        } else { // years
+            timeInput.setAttribute('min', '0.1');
+            timeInput.setAttribute('step', '0.1');
+            timeInput.value = '5'; // Default to 5 years
+        }
+        resetResults();
+    }
+
+    // Switch between Simple and Compound tabs
+    function switchMode(mode) {
+        currentMode = mode;
+        
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        if (mode === 'simple') {
+            document.querySelectorAll('.tab-btn')[0].classList.add('active');
+            document.getElementById('compoundingFrequencyGroup').style.display = 'none';
+            document.getElementById('interestType').textContent = 'SI';
+        } else {
+            document.querySelectorAll('.tab-btn')[1].classList.add('active');
+            document.getElementById('compoundingFrequencyGroup').style.display = 'block';
+            document.getElementById('interestType').textContent = 'CI';
+        }
+        resetResults();
+    }
+
+    window.onload = () => {
+        switchMode('simple');
+        updateTimeInputAttributes(); // Initialize time attributes
+    };
+
+
+    function calculateInterest() {
+        const P = parseFloat(document.getElementById('principal').value);
+        const R = parseFloat(document.getElementById('rate').value);
+        const timeValue = parseFloat(document.getElementById('timeValue').value);
+        const timeUnit = document.getElementById('timeUnit').value;
+        const errorDiv = document.getElementById('errorMsg');
+        errorDiv.style.display = 'none';
+
+        // --- CONVERT TIME TO YEARS (T) ---
+        let T;
+        let T_display_source = `${timeValue} ${timeUnit}`;
+
+        if (timeUnit === 'months') {
+            T = timeValue / 12;
+            T_display_source += ` (T = ${T.toFixed(4)} years)`;
+        } else {
+            T = timeValue;
+        }
+
+        if (isNaN(P) || P <= 0 || isNaN(R) || R <= 0 || isNaN(timeValue) || timeValue <= 0) {
+            errorDiv.textContent = "Please enter valid, positive values for Principal, Rate, and Time.";
+            errorDiv.style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+            return;
+        }
+
+        const r = R / 100;
+
+        let totalAmount;
+        let totalInterest;
+
+        if (currentMode === 'simple') {
+            totalInterest = P * r * T;
+            totalAmount = P + totalInterest;
+            generateBreakdownSimple(P, R, r, T, totalInterest, totalAmount, T_display_source);
+            
+        } else {
+            const n = parseInt(document.getElementById('frequency').value);
+            totalAmount = P * Math.pow((1 + r / n), (n * T));
+            totalInterest = totalAmount - P;
+            generateBreakdownCompound(P, R, r, T, n, totalInterest, totalAmount, T_display_source);
+        }
+
+        // RENDER RESULTS
+        document.getElementById('resAmount').textContent = formatCurrency(totalAmount);
+        document.getElementById('resInterest').textContent = formatCurrency(totalInterest);
+
+        // MAX COMPATIBILITY MATHJAX RENDER
+        if (typeof MathJax !== 'undefined') {
+             MathJax.Hub.Queue(["Typeset", MathJax.Hub, "breakdownContent", function () {
+                document.getElementById('results').style.display = 'block';
+            }]);
+        } else {
+            document.getElementById('errorMsg').textContent = "MathJax library failed to load. Please check your internet connection.";
+            document.getElementById('errorMsg').style.display = 'block';
+            document.getElementById('results').style.display = 'block';
+        }
+    }
+
+    /* --- BREAKDOWN FUNCTIONS (using \begin{equation*} for stability) --- */
+
+    function generateBreakdownSimple(P, R, r, T, SI, A, T_display_source) {
+        const content = document.getElementById('breakdownContent');
+        const currency = getCurrency();
+        content.innerHTML = '';
+        
+        // Pre-format ALL numerical variables for LaTeX
+        const P_latex = P.toString(); 
+        const r_latex = r.toFixed(4).toString();
+        const T_latex = T.toFixed(4).toString(); // T is now the calculated value in years
+        const SI_latex = fmtLatex(SI);
+        const A_latex = fmtLatex(A);
+        
+        // Simple Interest (SI)
+        content.innerHTML += `
+            <div class="breakdown-item">
+                <h3>1. Simple Interest (SI) Calculation</h3>
+                <p>Time input: ${T_display_source}. Calculation uses $T = ${T_latex}$ years.</p>
+                <div class="math-output">
+                    \\begin{equation*} 
+                        \\text{Formula:} \\quad SI = P \\times R \\times T 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\text{Where:} \\quad P = ${currency.latex}${P_latex} \\quad \\text{(Principal)} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\quad R = \\frac{${R}}{100} = ${r_latex} \\quad \\text{(Rate as decimal)} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\quad T = ${T_latex} \\quad \\text{(Time in years)} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\text{Substitution:} \\quad SI = ${P_latex} \\times ${r_latex} \\times ${T_latex} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\text{Calculation:} \\quad SI = ${SI_latex} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\textbf{Result:} \\quad \\text{SI} = ${formatCurrency(SI)} 
+                    \\end{equation*}
+                </div>
+            </div>
+        `;
+
+        // Future Value (Amount A)
+        content.innerHTML += `
+            <div class="breakdown-item">
+                <h3>2. Total Future Value (Amount A)</h3>
+                <div class="math-output">
+                    \\begin{equation*}
+                        \\text{Formula:} \\quad A = P + SI 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\text{Substitution:} \\quad A = ${P_latex} + ${SI_latex} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\text{Calculation:} \\quad A = ${A_latex} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\textbf{Result:} \\quad \\text{A} = ${formatCurrency(A)} 
+                    \\end{equation*}
+                </div>
+            </div>
+        `;
+    }
+
+    function generateBreakdownCompound(P, R, r, T, n, CI, A, T_display_source) {
+        const content = document.getElementById('breakdownContent');
+        const currency = getCurrency();
+        content.innerHTML = '';
+
+        // Pre-format ALL numerical variables for LaTeX
+        const P_latex = P.toString(); 
+        const r_latex = r.toFixed(4).toString();
+        const T_latex = T.toFixed(4).toString();
+        const CI_latex = fmtLatex(CI);
+        const A_latex = fmtLatex(A);
+        const rate_over_n = r / n;
+        const n_times_T = n * T;
+        const base = 1 + rate_over_n;
+        
+        // Future Value (Amount A)
+        content.innerHTML += `
+            <div class="breakdown-item">
+                <h3>1. Total Future Value (Amount A)</h3>
+                <p>Time input: ${T_display_source}. Calculation uses $T = ${T_latex}$ years.</p>
+                <p>The interest is compounded ${n} times per year, for a total of ${n_times_T.toFixed(4)} periods.</p>
+                <div class="math-output">
+                    \\begin{equation*}
+                        \\text{Formula:} \\quad A = P \\left(1 + \\frac{r}{n}\\right)^{nt} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\text{Where:} \\quad P = ${currency.latex}${P_latex} \\quad \\text{(Principal)} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\quad r = ${r_latex} \\quad \\text{(Rate as decimal)} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\quad n = ${n} \\quad \\text{(Compounding frequency)} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\quad t = ${T_latex} \\quad \\text{(Time in years)} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\text{Substitution:} \\quad A = ${P_latex} \\left(1 + \\frac{${r_latex}}{${n}}\\right)^{${n} \\times ${T_latex}} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\text{Step 1: } \\quad \\frac{r}{n} = \\frac{${r_latex}}{${n}} = ${fmtLatex(rate_over_n)} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\text{Step 2: } \\quad 1 + \\frac{r}{n} = 1 + ${fmtLatex(rate_over_n)} = ${fmtLatex(base)} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\text{Step 3: } \\quad nt = ${n} \\times ${T_latex} = ${fmtLatex(n_times_T)} \\text{ total periods} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\text{Step 4: } \\quad A = ${P_latex} \\times (${fmtLatex(base)})^{${fmtLatex(n_times_T)}} = ${A_latex} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\textbf{Result:} \\quad \\text{A} = ${formatCurrency(A)} 
+                    \\end{equation*}
+                </div>
+            </div>
+        `;
+
+        // Compound Interest (CI)
+        content.innerHTML += `
+            <div class="breakdown-item">
+                <h3>2. Compound Interest (CI) Calculation</h3>
+                <div class="math-output">
+                    \\begin{equation*}
+                        \\text{Formula:} \\quad CI = A - P 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\text{Substitution:} \\quad CI = ${A_latex} - ${P_latex} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\text{Calculation:} \\quad CI = ${CI_latex} 
+                    \\end{equation*}
+                    \\begin{equation*}
+                        \\textbf{Result:} \\quad \\text{CI} = ${formatCurrency(CI)} 
+                    \\end{equation*}
+                </div>
+            </div>
+        `;
+    }
+
+</script>
+
+</body>
+</html>
