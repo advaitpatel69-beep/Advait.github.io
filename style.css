@@ -164,6 +164,18 @@ footer {
   border-radius: 8px;
 }
 
+/* FORCE center calculator on desktop */
+.tool-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Ensure calculator card stays centered */
+.tool-container > * {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 
 
 
