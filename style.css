@@ -210,3 +210,23 @@ footer a:hover {
   color: #ffffff;
   text-decoration: underline;
 }
+
+.main-nav {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.nav-disabled {
+  color: #888;
+  cursor: not-allowed;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.nav-disabled:hover {
+  text-decoration: none;
+}
+
+
+
