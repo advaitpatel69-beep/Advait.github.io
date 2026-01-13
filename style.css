@@ -228,5 +228,29 @@ footer a:hover {
   text-decoration: none;
 }
 
+.site-footer {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  background-color: #f8f8f8;
+  font-size: 0.9rem;
+}
+
+.site-footer nav a {
+  margin: 0 6px;
+}
+
+.footer-categories {
+  margin-top: 8px;
+}
+
+.footer-note {
+  margin-top: 10px;
+  color: #666;
+}
+
+
+
+
 
 
