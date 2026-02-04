@@ -6,21 +6,36 @@
   <title>Contact Us – Student Helper Tools</title>
   <meta name="description" content="Contact Student Helper Tools for questions, feedback, or support related to our student calculators and educational tools.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://advaitpatel69-beep.github.io/Advait.github.io/style.css">
 </head>
 <body>
 
 <header>
-  <h1>Contact Us</h1>
+        <div class="header-container">
+            <h1 class="site-title">Contact Us</h1>
+	    <p>Free online tools for students</p>
+            <nav>
+                <a href="/Advait.github.io/index.html">Home</a>
 
-  <nav class="main-nav">
-    <a href="index.html">Home</a>
+                <span class="nav-disabled">Student Calculators (Coming Soon)</span>
+                <span class="nav-disabled">Medical Calculators (Coming Soon)</span>
+                <span class="nav-disabled">Finance Calculators (Coming Soon)</span>
+            </nav>
+            <div class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <a href="/Advait.github.io/index.html">Home</a>
 
-    <span class="nav-disabled">Student Calculators (Coming Soon)</span>
-    <span class="nav-disabled">Medical Calculators (Coming Soon)</span>
-    <span class="nav-disabled">Finance Calculators (Coming Soon)</span>
-  </nav>
-</header>
+            <span class="nav-disabled">Student Calculators (Coming Soon)</span>
+            <span class="nav-disabled">Medical Calculators (Coming Soon)</span>
+            <span class="nav-disabled">Finance Calculators (Coming Soon)</span>
+        </div>
+    </header>
+
 
 <main>
   <section>
@@ -57,22 +72,60 @@
 </main>
 
 <footer>
-  <p>© 2026 Student Helper Tools</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/Advait.github.io/index.html">Home</a></li>
+               	    <li><a href="/Advait.github.io/about.html">About</a></li>
+               	    <li><a href="/Advait.github.io/contact.html">Contact</a></li>
+               	    <li><a href="/Advait.github.io/privacy-policy.html">Privacy Policy</a></li>
 
-  <nav>
-    <a href="index.html">Home</a> |
-    <a href="about.html">About</a> |
-    <a href="contact.html">Contact</a> |
-    <a href="privacy-policy.html">Privacy Policy</a>
-  </nav>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Student Tools</h3>
+                <ul>
+		                <li><a href="/Advait.github.io/finance/finance-emi-calculator.html">EMI Calculator</a></li>
+		                <li><a href="/Advait.github.io/finance/finance-sip-calculator.html">SIP Calculator</a></li>
+                    <li><a href="/Advait.github.io/simple-compound-interest-calculator.html">Simple & Compound Interest Calculator</a></li>
+                
+                    <li><span class="coming-soon">FD Calculator (Coming Soon)</span></li>
+                    <li><span class="coming-soon">GST Calculator (Coming Soon)</span></li>
+                </ul>
+            </div>
 
-  <div class="footer-categories">
-    <span class="nav-disabled">Student Calculators (Coming Soon)</span> |
-    <span class="nav-disabled">Medical Calculators (Coming Soon)</span> |
-    <span class="nav-disabled">Finance Calculators (Coming Soon)</span>
-  </div>
+	    <div class="footer-section">
+                <h3>Finance Tools</h3>
+                <ul>
+		    <li><a href="/Advait.github.io/finance/finance-emi-calculator.html">EMI Calculator</a></li>
+		    <li><a href="/Advait.github.io/finance/finance-sip-calculator.html">SIP Calculator</a></li>
+                    <li><a href="/Advait.github.io/simple-compound-interest-calculator.html">Simple & Compound Interest Calculator</a></li>
+                
+                    <li><span class="coming-soon">FD Calculator (Coming Soon)</span></li>
+                    <li><span class="coming-soon">GST Calculator (Coming Soon)</span></li>
+                </ul>
+            </div>
 
-</footer>
+            
+        <div class="copyright">
+            <p>&copy; Student Helper Tools. All rights reserved.</p>
+        </div>
+    </footer>
+<script>
+
+function toggleMenu() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('active');
+        }
+
+document.addEventListener('DOMContentLoaded', function() {
+	document.getElementById('hamburgerBtn').addEventListener('click', toggleMenu);
+
+});
+
+</script>
+
 
 </body>
 </html>
