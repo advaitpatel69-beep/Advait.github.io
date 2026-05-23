@@ -1,8 +1,11 @@
-<!-- Google tag (gtag.js) -->
-async src="https://www.googletagmanager.com/gtag/js?id=G-B0M63KX41H"
+// Load the Google Tag library dynamically
+var script = document.createElement('script');
+script.src = 'https://www.googletagmanager.com/gtag/js?id=G-B0M63KX41H';
+script.async = true;
+document.head.appendChild(script);
 
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-B0M63KX41H');
+// Initialize tracking
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-B0M63KX41H');
