@@ -4,19 +4,19 @@
   <url>
     <loc>https://smartcalcworld.com/index.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>1.0</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/percentage-calculator.html</loc>
     <lastmod>2026-01-16</lastmod>
-    <priority>0.4</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/cgpa-calculator.html</loc>
     <lastmod>2026-01-16</lastmod>
-    <priority>0.5</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
@@ -46,20 +46,20 @@
   <url>
     <loc>https://smartcalcworld.com/finance/finance-sip-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/finance-emi-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
     <!-- Finance Main Hub -->
   <url>
     <loc>https://smartcalcworld.com/finance/finance-hub.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
 
   <!-- Finance Sub-Hubs -->
@@ -90,134 +90,134 @@
   <url>
     <loc>https://smartcalcworld.com/finance/saving-retirement/saving-retirement-hub.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 
   <!-- Finance Investment calculators -->
   <url>
     <loc>https://smartcalcworld.com/finance/investment/finance-fd-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/finance-rd-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/tax/finance-gst-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/apy-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/cagr-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
     <url>
     <loc>https://smartcalcworld.com/finance/investment/inflation-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/lumpsum-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/retirement-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/real-return-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/investment-fee-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/dca-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/investment-goal-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/portfolio-growth-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/mutual-fund-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/unified-trading-dashboard.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/swp-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/stock-profit-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/crypto-profit-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/bitcoin-growth-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/ppf-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/asset-allocation-calculator.html</loc>
     <lastmod>2026-07-01</lastmod>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
 </urlset>
