@@ -156,6 +156,19 @@
 
   <url>
     <loc>https://smartcalcworld.com/finance/investment/dca-calculator.html</loc>
+    
+    <image:image>
+      <image:loc>https://smartcalcworld.com/images/finance/investment/dca-calculator/dca-investment-growth.png</image:loc>
+      <image:title>Dollar Cost Averaging calculator Investment Growth Chart</image:title>
+      <image:caption>Visual graph demonstrating the growth of portfolio over time.</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://smartcalcworld.com/images/finance/investment/dca-calculator/dollar-cost-averaging-calculator.png</image:loc>
+      <image:title>Dollar Cost Averaging calculator Interface</image:title>
+      <image:caption>Screenshot showing the total portfolio value, total contribution, investment growth and inflation adjusted return value of dca calculator.</image:caption>
+    </image:image>
+      
     <lastmod>2026-07-01</lastmod>
     <priority>0.9</priority>
   </url>
