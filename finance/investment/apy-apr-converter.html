@@ -1,0 +1,3270 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index,follow">
+    <title>APY & APR Convertor Online – Convert, Compare & Calculate Interest Rates</title>
+    <meta name="description"
+        content="Free APY & APR Convertor – Instantly convert APY to APR and APR to APY with high precision. See the mathematical breakdown, frequency comparison charts, and understand the difference between nominal and effective rates.">
+    <link rel="canonical" href="https://smartcalcworld.com/finance/investment/apy-apr-converter.html">
+    <link rel="icon" type="image/png" href="https://smartcalcworld.com/favicon.png">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="APY ↔ APR Converter Online | SmartCalc World">
+    <meta property="og:description"
+        content="Free APY & APR Converter. Convert APY to APR and APR to APY instantly. See step-by-step mathematical breakdowns and comparison tables.">
+    <meta property="og:url" content="https://smartcalcworld.com/finance/investment/apy-apr-converter.html">
+    <meta property="og:image" content="https://smartcalcworld.com/favicon.png">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="APY ↔ APR Converter Online | SmartCalc World">
+    <meta name="twitter:description"
+        content="Convert between APY and APR with high precision and step-by-step math breakdowns.">
+    <meta name="twitter:image" content="https://smartcalcworld.com/favicon.png">
+
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"Organization",
+        "@id":"https://smartcalcworld.com/#org",
+        "name":"SmartCalc World",
+        "url":"https://smartcalcworld.com",
+        "description":"Free financial calculators for investment, loans, savings and retirement planning."
+      },
+      {
+        "@type":"WebPage",
+        "@id":"https://smartcalcworld.com/finance/investment/apy-apr-converter.html",
+        "name":"APY ↔ APR Converter – Convert Interest Rates Online",
+        "url":"https://smartcalcworld.com/finance/investment/apy-apr-converter.html",
+        "description":"Free APY to APR and APR to APY converter. See math breakdowns, EAR calculations, and frequency comparisons.",
+        "isPartOf":{"@id":"https://smartcalcworld.com/#org"},
+        "inLanguage":"en"
+      },
+      {
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://smartcalcworld.com/"},
+          {"@type":"ListItem","position":2,"name":"Finance","item":"https://smartcalcworld.com/finance/"},
+          {"@type":"ListItem","position":3,"name":"Investment","item":"https://smartcalcworld.com/finance/investment/"},
+          {"@type":"ListItem","position":4,"name":"APY ↔ APR Converter","item":"https://smartcalcworld.com/finance/investment/apy-apr-converter.html"}
+        ]
+      },
+      {
+        "@type":"FAQPage",
+        "mainEntity":[
+          {"@type":"Question","name":"Are APY and Effective Annual Rate (EAR) the same?","acceptedAnswer":{"@type":"Answer","text":"Yes. In finance, APY (Annual Percentage Yield) and EAR (Effective Annual Rate) are identical concepts. Both represent the true annualized return after compounding."}},
+          {"@type":"Question","name":"Can APY be lower than APR?","acceptedAnswer":{"@type":"Answer","text":"No. APY is mathematically impossible to be lower than APR. At minimum, if compounding happens only once a year (Annually), APY equals APR. If compounding occurs more frequently, APY will always be strictly greater than APR."}},
+          {"@type":"Question","name":"Why does daily compounding barely differ from monthly?","acceptedAnswer":{"@type":"Answer","text":"As the frequency (n) increases towards infinity, the return approaches a mathematical limit. The leap from Annual to Monthly is significant, but the leap from Monthly to Daily yields sharply diminishing returns."}},
+          {"@type":"Question","name":"What is continuous compounding?","acceptedAnswer":{"@type":"Answer","text":"Continuous compounding assumes interest is calculated and added instantaneously, an infinite number of times per year. The formula uses the mathematical constant 'e': APY = e^(APR) - 1."}},
+          {"@type":"Question","name":"Which is better for a loan: high APR or low APY?","acceptedAnswer":{"@type":"Answer","text":"For any debt (loans, credit cards), you want the lowest possible rate. Always compare the APRs of loans, as lending laws require lenders to disclose the standard APR."}},
+          {"@type":"Question","name":"How do I convert a monthly interest rate to APY?","acceptedAnswer":{"@type":"Answer","text":"Multiply your monthly rate by 12 to get the APR. Then, use our APR to APY converter, select 'Monthly' compounding, and you'll get the exact APY."}}
+        ]
+      }
+    ]
+    }
+    </script>
+
+    <script src="/Tools/google-analytics.js"></script>
+
+    <!-- Chart.js CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <style>
+        :root {
+            --blue-50: #eff6ff;
+            --blue-100: #dbeafe;
+            --blue-200: #bfdbfe;
+            --blue-500: #3b82f6;
+            --blue-600: #2563eb;
+            --blue-700: #1d4ed8;
+            --blue-900: #1e3a8a;
+            --green-50: #f0fdf4;
+            --green-100: #dcfce7;
+            --green-400: #4ade80;
+            --green-500: #22c55e;
+            --green-600: #16a34a;
+            --green-700: #15803d;
+            --amber-50: #fffbeb;
+            --amber-100: #fef3c7;
+            --amber-400: #fbbf24;
+            --amber-500: #f59e0b;
+            --amber-600: #d97706;
+            --purple-500: #8b5cf6;
+            --purple-600: #7c3aed;
+            --rose-500: #f43f5e;
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+            --white: #ffffff;
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 20px;
+            --radius-xl: 24px;
+            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+            --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.05);
+            --shadow-lg: 0 10px 40px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(15, 23, 42, 0.07);
+            --shadow-xl: 0 20px 60px rgba(15, 23, 42, 0.15), 0 8px 20px rgba(15, 23, 42, 0.08);
+            --gradient-blue: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            --gradient-green: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            --gradient-hero: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #2563eb 100%);
+            --gradient-gold: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+            --header-h: 64px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #f0f4f8;
+            color: var(--slate-800);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img,
+        canvas {
+            max-width: 100%;
+        }
+
+        a {
+            color: var(--blue-600);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* ─── HEADER ─── */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--gradient-hero);
+            color: var(--white);
+            box-shadow: 0 2px 20px rgba(29, 78, 216, 0.25);
+            height: var(--header-h);
+        }
+
+        .hdr-inner {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hdr-logo {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hdr-logo-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            backdrop-filter: blur(8px);
+        }
+
+        .hdr-nav {
+            display: flex;
+            gap: 0.25rem;
+            align-items: center;
+        }
+
+        .hdr-nav a,
+        .hdr-nav span {
+            color: rgba(255, 255, 255, 0.88);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .hdr-nav a:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .nav-disabled {
+            opacity: 0.55;
+            cursor: default;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            padding: 0.6rem;
+            border-radius: 8px;
+        }
+
+        .hamburger span {
+            width: 22px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 999px;
+            transition: 0.3s ease;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: var(--header-h);
+            left: 0;
+            right: 0;
+            background: #1e3a8a;
+            flex-direction: column;
+            padding: 1rem;
+            gap: 0.5rem;
+            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.25);
+            z-index: 999;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
+        .mobile-nav a,
+        .mobile-nav span {
+            color: rgba(255, 255, 255, 0.9);
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .mobile-nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+
+        /* ─── PAGE LAYOUT ─── */
+        .page {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        /* ─── BREADCRUMB ─── */
+        .breadcrumb {
+            font-size: 0.82rem;
+            color: var(--slate-500);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb a {
+            color: var(--slate-500);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--blue-600);
+            text-decoration: none;
+        }
+
+        .breadcrumb-sep {
+            color: var(--slate-400);
+        }
+
+        .breadcrumb span:last-child {
+            color: var(--slate-700);
+            font-weight: 600;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            background: var(--gradient-hero);
+            border-radius: var(--radius-xl);
+            padding: 2rem 2rem 1.75rem;
+            margin-bottom: 1.75rem;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: 30%;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+
+        .hero-icon {
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 0.73rem;
+            font-weight: 700;
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+            margin-bottom: 0.7rem;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero h1 {
+            font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            color: var(--white);
+            margin-bottom: 0.6rem;
+        }
+
+        .hero-sub {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.82);
+            max-width: 600px;
+            line-height: 1.65;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .hero-stat-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #4ade80;
+        }
+
+        /* ─── MODE SELECTOR ─── */
+        .mode-selector-wrap {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 0.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .mode-tab {
+            flex: 1;
+            padding: 0.85rem 1rem;
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--slate-500);
+            background: transparent;
+            transition: all 0.25s ease;
+            text-align: center;
+        }
+
+        .mode-tab:hover {
+            color: var(--blue-600);
+            background: var(--blue-50);
+        }
+
+        .mode-tab.active {
+            background: var(--gradient-blue);
+            color: var(--white);
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+        }
+
+        .mode-tab-subtitle {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-top: 0.15rem;
+        }
+
+        /* ─── MAIN GRID ─── */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        /* ─── CARD ─── */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 1.25rem 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .card-header-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--blue-50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--slate-900);
+        }
+
+        .card-subtitle {
+            font-size: 0.8rem;
+            color: var(--slate-500);
+            margin-top: 0.1rem;
+        }
+
+        .card-body {
+            padding: 1.25rem 1.5rem 1.5rem;
+        }
+
+        /* ─── FORM ELEMENTS ─── */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--slate-700);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-label-icon {
+            width: 18px;
+            height: 18px;
+            background: var(--blue-100);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-prefix {
+            position: absolute;
+            left: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--slate-500);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .input-suffix {
+            position: absolute;
+            right: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--slate-500);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        select {
+            width: 100%;
+            border: 1.5px solid var(--slate-200);
+            border-radius: var(--radius-sm);
+            padding: 0.72rem 0.9rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--slate-800);
+            background: var(--slate-50);
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        input[type="number"]:focus,
+        input[type="text"]:focus,
+        select:focus {
+            border-color: var(--blue-500);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .has-prefix input {
+            padding-left: 2.2rem;
+        }
+
+        .has-suffix input {
+            padding-right: 2.2rem;
+        }
+
+        /* ─── SLIDERS ─── */
+        .slider-group {
+            margin-top: 0.6rem;
+        }
+
+        .slider-track {
+            position: relative;
+            height: 4px;
+            background: var(--slate-200);
+            border-radius: 999px;
+            margin: 0.75rem 0 0.35rem;
+        }
+
+        .slider-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--gradient-blue);
+            border-radius: 999px;
+            transition: width 0.1s;
+            pointer-events: none;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 4px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2.5px solid var(--blue-500);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2.5px solid var(--blue-500);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+            cursor: pointer;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            color: var(--slate-400);
+            font-weight: 500;
+            margin-top: 0.1rem;
+        }
+
+        /* ─── FREQUENCY BUTTONS ─── */
+        .freq-group {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.35rem;
+            margin-top: 0.15rem;
+        }
+
+        .freq-btn {
+            padding: 0.5rem 0.25rem;
+            border-radius: 8px;
+            border: 1.5px solid var(--slate-200);
+            background: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--slate-600);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .freq-btn:hover {
+            border-color: var(--blue-500);
+            color: var(--blue-600);
+        }
+
+        .freq-btn.active {
+            background: var(--gradient-blue);
+            border-color: transparent;
+            color: var(--white);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+        }
+
+        /* ─── PERIOD INPUTS ─── */
+        .period-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        /* ─── CURRENCY SELECT ─── */
+        .currency-select-wrap {
+            position: relative;
+        }
+
+        .currency-flag {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .currency-select-wrap select {
+            padding-left: 2.4rem;
+        }
+
+        /* ─── CALCULATE BUTTON ─── */
+        .calc-btn {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: var(--radius-md);
+            background: var(--gradient-blue);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+            letter-spacing: -0.01em;
+            margin-top: 0.25rem;
+        }
+
+        .calc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(37, 99, 235, 0.45);
+        }
+
+        .calc-btn:active {
+            transform: translateY(0);
+        }
+
+        .reset-btn {
+            width: 100%;
+            padding: 0.8rem 1.5rem;
+            border: 1.5px solid var(--slate-200);
+            border-radius: var(--radius-md);
+            background: var(--white);
+            color: var(--slate-600);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 0.6rem;
+        }
+
+        .reset-btn:hover {
+            border-color: var(--blue-500);
+            color: var(--blue-600);
+        }
+
+        /* ─── RESULTS PANEL ─── */
+        .results-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        #resultsContent {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* ─── EMPTY STATE ─── */
+        .empty-state {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 2px dashed var(--slate-200);
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .empty-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--slate-700);
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-sub {
+            font-size: 0.88rem;
+            color: var(--slate-400);
+        }
+
+        /* ─── RESULT METRICS GRID ─── */
+        .metrics-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.85rem;
+        }
+
+        .metrics-row-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* Custom styled to 2 columns for APY's Row 2 metrics */
+            gap: 0.85rem;
+        }
+
+        .metric-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 1.1rem 1rem;
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .metric-card.blue::before {
+            background: var(--gradient-blue);
+        }
+
+        .metric-card.green::before {
+            background: var(--gradient-green);
+        }
+
+        .metric-card.gold::before {
+            background: var(--gradient-gold);
+        }
+
+        .metric-card.purple::before {
+            background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+        }
+
+        .metric-card.rose::before {
+            background: linear-gradient(135deg, #e11d48, #f43f5e);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .metric-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .metric-card.blue .metric-icon {
+            background: var(--blue-50);
+        }
+
+        .metric-card.green .metric-icon {
+            background: var(--green-50);
+        }
+
+        .metric-card.gold .metric-icon {
+            background: var(--amber-50);
+        }
+
+        .metric-card.purple .metric-icon {
+            background: #f5f3ff;
+        }
+
+        .metric-card.rose .metric-icon {
+            background: #fff1f2;
+        }
+
+        .metric-label {
+            font-size: 0.73rem;
+            font-weight: 700;
+            color: var(--slate-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.3rem;
+        }
+
+        .metric-value {
+            font-size: clamp(1rem, 1.8vw, 1.35rem);
+            font-weight: 800;
+            color: var(--slate-900);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 0.2rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .metric-value.blue {
+            color: var(--blue-700);
+        }
+
+        .metric-value.green {
+            color: var(--green-700);
+        }
+
+        .metric-value.gold {
+            color: var(--amber-600);
+        }
+
+        .metric-value.purple {
+            color: var(--purple-600);
+        }
+
+        .metric-sub {
+            font-size: 0.75rem;
+            color: var(--slate-500);
+            line-height: 1.4;
+        }
+
+        /* ─── CHARTS ─── */
+        .charts-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        .charts-section-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--slate-100);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .charts-section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--slate-900);
+        }
+
+        .charts-section-sub {
+            font-size: 0.8rem;
+            color: var(--slate-500);
+            margin-top: 0.1rem;
+        }
+
+        .charts-tabs {
+            display: flex;
+            gap: 0.35rem;
+            background: var(--slate-100);
+            padding: 0.3rem;
+            border-radius: 10px;
+        }
+
+        .chart-tab {
+            padding: 0.4rem 0.85rem;
+            border-radius: 7px;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--slate-500);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .chart-tab.active {
+            background: var(--white);
+            color: var(--blue-600);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            /* Styled similarly to APY's charts grid side-by-side */
+            gap: 0;
+        }
+
+        .chart-pane {
+            padding: 1.25rem 1.5rem;
+        }
+
+        .chart-pane:first-child {
+            border-right: 1px solid var(--slate-100);
+        }
+
+        .chart-pane-full {
+            padding: 1.25rem 1.5rem;
+        }
+
+        .chart-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--slate-700);
+            margin-bottom: 0.1rem;
+        }
+
+        .chart-sublabel {
+            font-size: 0.75rem;
+            color: var(--slate-400);
+            margin-bottom: 0.85rem;
+        }
+
+        .chart-legend {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.75rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--slate-600);
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .chart-canvas {
+            position: relative;
+            height: 220px;
+        }
+
+        .donut-wrap {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .donut-canvas {
+            position: relative;
+            height: 200px;
+            width: 200px;
+            margin: 0 auto;
+        }
+
+        .donut-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .donut-center-value {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            line-height: 1.1;
+        }
+
+        .donut-center-label {
+            font-size: 0.68rem;
+            color: var(--slate-500);
+            font-weight: 600;
+        }
+
+        .donut-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            width: 100%;
+        }
+
+        .donut-legend-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+        }
+
+        .donut-legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .donut-legend-label {
+            color: var(--slate-600);
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .donut-legend-value {
+            color: var(--slate-800);
+            font-weight: 700;
+        }
+
+        /* ─── TABLE SECTION ─── */
+        .table-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        .table-section-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--slate-100);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .table-section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--slate-900);
+        }
+
+        .show-more-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 1rem;
+            border-radius: 8px;
+            border: 1.5px solid var(--blue-200);
+            background: var(--blue-50);
+            color: var(--blue-600);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .show-more-btn:hover {
+            background: var(--blue-100);
+            border-color: var(--blue-300);
+        }
+
+        .tbl-wrap {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px;
+        }
+
+        thead tr {
+            background: linear-gradient(135deg, var(--blue-700), var(--blue-600));
+        }
+
+        th {
+            padding: 0.85rem 1rem;
+            text-align: right;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(100, 178, 199, 0.9);
+            white-space: nowrap;
+        }
+
+        th:first-child {
+            text-align: left;
+            padding-left: 1.5rem;
+        }
+
+        td {
+            padding: 0.8rem 1rem;
+            text-align: right;
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--slate-100);
+            font-variant-numeric: tabular-nums;
+            color: var(--slate-700);
+            font-weight: 500;
+        }
+
+        td:first-child {
+            text-align: left;
+            padding-left: 1.5rem;
+            font-weight: 700;
+            color: var(--slate-900);
+        }
+
+        tbody tr:hover {
+            background: var(--blue-50);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        td.positive {
+            color: var(--green-700);
+            font-weight: 700;
+        }
+
+        td.highlight {
+            color: var(--blue-700);
+            font-weight: 700;
+        }
+
+        /* ─── COMPARISON SECTION ─── */
+        .compare-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        .compare-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--slate-100);
+        }
+
+        .compare-header-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--slate-900);
+        }
+
+        .compare-header-sub {
+            font-size: 0.8rem;
+            color: var(--slate-500);
+            margin-top: 0.1rem;
+        }
+
+        .compare-chart-area {
+            padding: 1.25rem 1.5rem;
+        }
+
+        /* ─── DOWNLOAD SECTION ─── */
+        .download-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            box-shadow: var(--shadow-md);
+            padding: 1.25rem 1.5rem;
+        }
+
+        .download-header-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            margin-bottom: 1rem;
+        }
+
+        .download-btns {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .dl-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.1rem;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            flex: 1;
+            min-width: 130px;
+            justify-content: center;
+        }
+
+        .dl-btn.csv {
+            background: var(--green-50);
+            color: var(--green-700);
+            border: 1.5px solid var(--green-200);
+        }
+
+        .dl-btn.pdf {
+            background: #fff1f2;
+            color: #be123c;
+            border: 1.5px solid #fecdd3;
+        }
+
+        .dl-btn.share {
+            background: var(--blue-50);
+            color: var(--blue-700);
+            border: 1.5px solid var(--blue-200);
+        }
+
+        .dl-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* ─── KEY INSIGHTS ─── */
+        .features-strip {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            box-shadow: var(--shadow-md);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1.75rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .feature-icon {
+            width: 38px;
+            height: 38px;
+            min-width: 38px;
+            border-radius: 10px;
+            background: var(--blue-50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .feature-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--slate-800);
+            margin-bottom: 0.2rem;
+        }
+
+        .feature-desc {
+            font-size: 0.78rem;
+            color: var(--slate-500);
+            line-height: 1.5;
+        }
+
+        /* ─── SAVINGS MILESTONES ─── */
+        .milestones-panel {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            box-shadow: var(--shadow-sm);
+            padding: 1.25rem 1.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .milestone-timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .milestone-node {
+            background: var(--slate-50);
+            border: 1.5px solid var(--slate-200);
+            border-radius: var(--radius-md);
+            padding: 1rem 0.85rem;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+
+        .milestone-node.reached {
+            border-color: var(--blue-400);
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+        }
+
+        .milestone-percent {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--blue-600);
+            margin-bottom: 0.25rem;
+        }
+
+        .milestone-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--slate-600);
+            margin-bottom: 0.35rem;
+        }
+
+        .milestone-time {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--slate-800);
+        }
+
+        /* ─── CONTENT SECTIONS ─── */
+        .content-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            box-shadow: var(--shadow-md);
+            margin-top: 1.5rem;
+        }
+
+        .content-section h2 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--blue-500);
+            letter-spacing: -0.02em;
+        }
+
+        .content-section h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--slate-800);
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .content-section p {
+            color: var(--slate-600);
+            font-size: 0.93rem;
+            line-height: 1.75;
+            margin-bottom: 0.75rem;
+        }
+
+        .content-section ul {
+            margin: 0.25rem 0 0.75rem 1.25rem;
+        }
+
+        .content-section li {
+            color: var(--slate-600);
+            font-size: 0.93rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.65;
+        }
+
+        /* ─── FAQ ─── */
+        .faq-item {
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            margin-bottom: 0.6rem;
+        }
+
+        .faq-q {
+            padding: 1rem 1.25rem;
+            font-size: 0.93rem;
+            font-weight: 700;
+            color: var(--slate-800);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .faq-q:hover {
+            background: var(--slate-50);
+        }
+
+        .faq-a {
+            padding: 0 1.25rem 1rem;
+            font-size: 0.88rem;
+            color: var(--slate-600);
+            line-height: 1.7;
+            display: none;
+        }
+
+        /* ─── DISCLAIMER ─── */
+        .disclaimer {
+            background: linear-gradient(135deg, var(--amber-50), #fff7ed);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: var(--radius-md);
+            padding: 1.1rem 1.25rem;
+            margin-top: 1.5rem;
+            color: #78350f;
+            font-size: 0.85rem;
+            line-height: 1.65;
+        }
+
+        /* ─── LINKS GRID ─── */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        .link-card {
+            background: var(--slate-50);
+            border: 1.5px solid var(--slate-200);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            text-decoration: none;
+            color: var(--slate-700);
+            transition: all 0.22s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .link-card:hover {
+            border-color: var(--blue-400);
+            background: var(--blue-50);
+            color: var(--blue-700);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+            text-decoration: none;
+        }
+
+        .link-card-icon {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            border-radius: 10px;
+            background: var(--blue-50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .link-card strong {
+            display: block;
+            font-size: 0.88rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .link-card p {
+            font-size: 0.78rem;
+            color: var(--slate-500);
+            margin: 0;
+        }
+
+        .link-card:hover p {
+            color: var(--blue-500);
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--slate-900);
+            color: var(--white);
+            padding: 3rem 0 1.25rem;
+            margin-top: 4rem;
+        }
+
+        .footer-inner {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .footer-section h3 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #5eead4;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--slate-400);
+            font-size: 0.88rem;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .footer-disclaimer {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            color: var(--slate-400);
+            font-size: 0.82rem;
+            line-height: 1.65;
+            margin-bottom: 1.5rem;
+        }
+
+        .copyright,
+        .copyright-row {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.25rem;
+            text-align: center;
+            color: var(--slate-500);
+            font-size: 0.82rem;
+        }
+
+        /* ─── LOADING SKELETON ─── */
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, var(--slate-100) 25%, var(--slate-200) 50%, var(--slate-100) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 6px;
+        }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-up {
+            animation: fadeUp 0.4s ease forwards;
+        }
+
+        .animate-in {
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        /* ─── SWITCH / TOGGLE ─── */
+        .optional-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-top: 1px solid var(--slate-100);
+            margin-top: 0.5rem;
+        }
+
+        .optional-label {
+            font-size: 0.83rem;
+            font-weight: 600;
+            color: var(--slate-600);
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 36px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            position: absolute;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            inset: 0;
+            background: var(--slate-300);
+            border-radius: 999px;
+            transition: 0.2s;
+        }
+
+        .toggle-slider::before {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            left: 3px;
+            top: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.2s;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch input:checked+.toggle-slider {
+            background: var(--blue-500);
+        }
+
+        .toggle-switch input:checked+.toggle-slider::before {
+            transform: translateX(16px);
+        }
+
+        .optional-content {
+            display: none;
+        }
+
+        .optional-content.visible {
+            display: block;
+            animation: fadeUp 0.25s ease;
+        }
+
+        /* ─── HINT TEXT ─── */
+        .hint {
+            font-size: 0.75rem;
+            color: var(--slate-400);
+            margin-top: 0.3rem;
+        }
+
+        /* ─── STATUS BANNER ─── */
+        .status-banner {
+            display: none;
+            padding: 0.85rem 1rem;
+            border-radius: var(--radius-sm);
+            margin-bottom: 1rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        .status-banner.error {
+            display: block;
+            background: #fff1f2;
+            color: #be123c;
+            border: 1px solid #fecdd3;
+        }
+
+        .status-banner.success {
+            display: block;
+            background: var(--green-50);
+            color: var(--green-700);
+            border: 1px solid var(--green-200);
+        }
+
+        /* ─── COMPARE CHART ─── */
+        .compare-chart-wrap {
+            position: relative;
+            height: 240px;
+            margin-bottom: 1rem;
+        }
+
+        .compare-label-note {
+            font-size: 0.72rem;
+            color: var(--slate-400);
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        /* ─── DIVIDER ─── */
+        .section-divider {
+            height: 1px;
+            background: var(--slate-100);
+            margin: 1.25rem 0;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (min-width: 1024px) {
+            .metrics-row {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .metrics-row-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .main-grid {
+                grid-template-columns: 360px 1fr;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-pane:first-child {
+                border-right: none;
+                border-bottom: 1px solid var(--slate-100);
+            }
+
+            .metrics-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .metrics-row-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hdr-nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                padding: 1.5rem;
+            }
+
+            .hero-icon {
+                width: 48px;
+                height: 48px;
+                min-width: 48px;
+                font-size: 1.4rem;
+            }
+
+            .freq-group {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .metrics-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .metrics-row-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-pane:first-child {
+                border-right: none;
+                border-bottom: 1px solid var(--slate-100);
+            }
+
+            .features-strip {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .milestone-timeline {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .period-row {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .mode-tab-subtitle {
+                display: none;
+            }
+
+            .charts-section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+        }
+
+        @media (max-width: 479px) {
+            .page {
+                padding-inline: 1rem;
+            }
+
+            .metrics-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.6rem;
+            }
+
+            .metrics-row-2 {
+                grid-template-columns: 1fr;
+                gap: 0.6rem;
+            }
+
+            .milestone-timeline {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .freq-group {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .download-btns {
+                flex-direction: column;
+            }
+
+            .dl-btn {
+                flex: none;
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .mode-selector-wrap {
+                flex-direction: column;
+            }
+
+            .mode-tab {
+                flex: none;
+            }
+        }
+
+        /* ─── APY ADDITIONS (CALLOUTS, FORMULA & WINNER BANNER) ─── */
+        .callout {
+            background: linear-gradient(135deg, var(--blue-50) 0%, #e0f2fe 100%);
+            border-left: 4.5px solid var(--blue-500);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.92rem;
+            color: var(--blue-900);
+        }
+
+        .callout strong {
+            color: var(--blue-900);
+            font-weight: 800;
+        }
+
+        .callout-rose {
+            background: #fef2f2;
+            border-color: #ef4444;
+            color: #7f1d1d;
+        }
+
+        .callout-rose strong {
+            color: #7f1d1d;
+        }
+
+        .callout-amber {
+            background: var(--amber-50);
+            border-color: var(--amber-500);
+            color: #78350f;
+        }
+
+        .callout-amber strong {
+            color: #78350f;
+        }
+
+        .formula-box {
+            background: var(--slate-50);
+            border-left: 4.5px solid var(--slate-300);
+            border-radius: 0 10px 10px 0;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--slate-700);
+            overflow-x: auto;
+            border: 1px solid var(--slate-200);
+            border-left-width: 4.5px;
+        }
+
+        .winner-banner {
+            background: linear-gradient(135deg, var(--green-50) 0%, #f0fdf4 100%);
+            border: 1.5px solid var(--green-400);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .winner-icon {
+            font-size: 2.2rem;
+            line-height: 1;
+        }
+
+        .winner-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--green-700);
+            margin-bottom: 0.15rem;
+        }
+
+        .winner-desc {
+            font-size: 0.85rem;
+            color: var(--slate-600);
+        }
+
+        /* ─── TOOLTIP/TIP ICON ─── */
+        .tip-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--slate-200);
+            color: var(--slate-500);
+            font-size: 0.65rem;
+            font-weight: 800;
+            cursor: help;
+            margin-left: 4px;
+        }
+
+        /* ─── CUSTOM CONVERTER CSS ─── */
+        .math-breakdown {
+            background: var(--slate-50);
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--slate-700);
+            line-height: 1.7;
+        }
+
+        .math-breakdown .formula {
+            font-weight: bold;
+            color: var(--blue-700);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--slate-300);
+        }
+
+        .math-breakdown .step {
+            margin-bottom: 0.25rem;
+        }
+
+        .math-breakdown .step strong {
+            color: var(--slate-900);
+        }
+
+        .mode-tab.link-tab {
+            background: transparent;
+            color: var(--blue-600);
+            text-decoration: underline;
+        }
+
+        .mode-tab.link-tab:hover {
+            background: var(--blue-50);
+        }
+
+        .currency-select-wrap {
+            position: relative;
+        }
+
+        .currency-flag {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .currency-select-wrap select {
+            padding-left: 2.4rem;
+        }
+
+        .status-banner {
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: none;
+        }
+
+        .status-banner.show {
+            display: block;
+            animation: fadeInDown 0.3s ease;
+        }
+
+        .status-banner.error {
+            background: var(--rose-500);
+            color: white;
+        }
+
+        .status-banner.success {
+            background: var(--green-100);
+            color: var(--green-700);
+            border: 1px solid var(--green-400);
+        }
+
+        /* ─── ADDED LAYOUT CSS ─── */
+        .charts-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .charts-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .faq-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            box-shadow: var(--shadow-md);
+            margin-top: 2rem;
+        }
+
+        .faq-heading {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .faq-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ─── HEADER ─── -->
+    <header>
+        <div class="hdr-inner">
+            <div class="hdr-logo">
+                <div class="hdr-logo-icon">💰</div>
+                SmartCalc World
+            </div>
+            <nav class="hdr-nav">
+                <a href="https://smartcalcworld.com/index.html">Home</a>
+                <a href="https://smartcalcworld.com/finance/finance-hub.html">Finance Hub</a>
+                <span class="nav-disabled">Student Hub</span>
+                <span class="nav-disabled">Medical Hub</span>
+                <a href="#faq">FAQ</a>
+            </nav>
+            <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="https://smartcalcworld.com/index.html">Home</a>
+            <a href="https://smartcalcworld.com/finance/finance-hub.html">Finance Hub</a>
+            <span class="nav-disabled">Student Hub (Coming Soon)</span>
+            <span class="nav-disabled">Medical Hub (Coming Soon)</span>
+            <a href="#faq">FAQ</a>
+        </nav>
+    </header>
+
+    <!-- ══ PAGE ══ -->
+    <main class="page">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="https://smartcalcworld.com/index.html">Home</a>
+            <span class="breadcrumb-sep">›</span>
+            <a href="https://smartcalcworld.com/finance/finance-hub.html">Finance</a>
+            <span class="breadcrumb-sep">›</span>
+            <a href="https://smartcalcworld.com/finance/investment/investment-hub.html">Investment</a>
+            <span class="breadcrumb-sep">›</span>
+            <span>APY ↔ APR Converter</span>
+        </nav>
+
+        <!-- ─── HERO ─── -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-icon">🔄</div>
+                <div class="hero-text">
+                    <span class="hero-badge">✦ Premium Finance Tool</span>
+                    <h1>APY ↔ APR Converter</h1>
+                    <p class="hero-sub">Instantly convert Annual Percentage Yield (APY) to Annual Percentage Rate (APR)
+                        and vice versa with high precision. See the exact math breakdown and compare standard
+                        compounding frequencies.</p>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-dot"></div> APY to APR
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-dot"></div> APR to APY
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-dot"></div> High Precision
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── CALCULATOR ─── -->
+        <div class="dashboard-wrap">
+            <div class="main-grid">
+
+                <!-- LEFT PANEL -->
+                <div class="left-panel">
+
+                    <!-- Mode Selector -->
+                    <div class="mode-selector-wrap" role="tablist"
+                        style="margin-bottom: 1.5rem; display: flex; gap: 0.5rem;">
+                        <button class="mode-tab active" id="modeApyToApr" onclick="setMode('apyToApr')" role="tab"
+                            style="flex:1;">APY → APR</button>
+                        <button class="mode-tab" id="modeAprToApy" onclick="setMode('aprToApy')" role="tab"
+                            style="flex:1;">APR → APY</button>
+                        <a href="/finance/investment/apy-calculator.html" class="mode-tab link-tab" role="tab"
+                            style="flex:1; text-align:center;">APY Calculator ↗</a>
+                    </div>
+
+                    <div class="card animate-up" style="animation-delay:0.1s">
+                        <div class="card-header">
+                            <div class="card-header-icon">⚙️</div>
+                            <div>
+                                <div class="card-title">Conversion Settings</div>
+                                <div class="card-subtitle">Enter your rate and compounding details</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+                            <div id="statusBanner" class="status-banner"></div>
+
+                            <!-- Currency -->
+                            <div class="form-group">
+                                <label class="form-label" for="currencySelect">
+                                    Currency <span class="tip-icon"
+                                        title="Select your preferred currency for the $1,000 illustration">?</span>
+                                </label>
+                                <div class="currency-select-wrap">
+                                    <span class="currency-flag" id="currencyFlag">🇺🇸</span>
+                                    <select class="form-select" id="currencySelect" onchange="updateCurrency()">
+                                        <option value="USD">USD – US Dollar</option>
+                                        <option value="INR">INR – Indian Rupee</option>
+                                        <option value="EUR">EUR – Euro</option>
+                                        <option value="GBP">GBP – British Pound</option>
+                                        <option value="CAD">CAD – Canadian Dollar</option>
+                                        <option value="AUD">AUD – Australian Dollar</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-divider"></div>
+
+                            <!-- Input Rate -->
+                            <div class="form-group">
+                                <label class="form-label" for="inputRate">
+                                    <span id="rateLabel">APY (%)</span>
+                                    <span class="tip-icon" id="rateTip" title="The Annual Percentage Yield">?</span>
+                                </label>
+                                <div class="input-wrapper has-suffix">
+                                    <input type="number" id="inputRate" min="0" max="1000" step="any" value="5.00">
+                                    <span class="input-suffix">%</span>
+                                </div>
+                            </div>
+
+                            <!-- Compounding Frequency -->
+                            <div class="form-group">
+                                <label class="form-label" for="compFreq">
+                                    Compounding Frequency
+                                    <span class="tip-icon"
+                                        title="How often interest is added to the principal balance">?</span>
+                                </label>
+                                <select class="form-select" id="compFreq" onchange="checkCustomFreq()">
+                                    <option value="365">Daily (365/yr)</option>
+                                    <option value="52">Weekly (52/yr)</option>
+                                    <option value="26">Bi-Weekly (26/yr)</option>
+                                    <option value="12" selected>Monthly (12/yr)</option>
+                                    <option value="4">Quarterly (4/yr)</option>
+                                    <option value="2">Semi-Annually (2/yr)</option>
+                                    <option value="1">Annually (1/yr)</option>
+                                    <option value="custom">Custom Frequency</option>
+                                </select>
+                            </div>
+
+                            <!-- Custom Frequency Input -->
+                            <div class="form-group hidden" id="group-customFreq">
+                                <label class="form-label" for="customFreqInput">
+                                    Custom Periods per Year (n)
+                                    <span class="tip-icon"
+                                        title="Enter any number of compounding periods per year (e.g., 8760 for hourly)">?</span>
+                                </label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="customFreqInput" min="1" max="100000" step="1" value="365">
+                                </div>
+                            </div>
+
+                            <!-- Decimal Precision -->
+                            <div class="form-group">
+                                <label class="form-label" for="outputPrecision">
+                                    Output Precision
+                                    <span class="tip-icon"
+                                        title="Select how many decimal places to show in the result">?</span>
+                                </label>
+                                <select class="form-select" id="outputPrecision"
+                                    onchange="if(lastResults) triggerCalculate()">
+                                    <option value="2">2 Decimal Places (0.00%)</option>
+                                    <option value="4" selected>4 Decimal Places (0.0000%)</option>
+                                    <option value="6">6 Decimal Places (0.000000%)</option>
+                                    <option value="8">8 Decimal Places (0.00000000%)</option>
+                                </select>
+                            </div>
+
+                            <div class="section-divider"></div>
+
+                            <div style="display:flex; gap:0.5rem; margin-bottom: 1rem;">
+                                <button class="calc-btn" onclick="triggerCalculate()" type="button" id="calcBtn"
+                                    style="flex:2;">
+                                    <span id="btnIcon">⚡</span> <span id="btnText">Convert to APR</span>
+                                </button>
+                                <button class="calc-btn" onclick="swapConversion()" type="button"
+                                    style="flex:1; background:var(--slate-800); box-shadow:none;">
+                                    <span>⇅</span> Swap
+                                </button>
+                            </div>
+
+                            <button class="reset-btn" onclick="resetForm()" type="button">
+                                <span>↺</span> Reset
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT PANEL: RESULTS -->
+                <div class="results-panel" id="resultsPanel">
+
+                    <div class="empty-state" id="emptyState">
+                        <div class="empty-icon">🧮</div>
+                        <div class="empty-title">Ready for Conversion</div>
+                        <div class="empty-sub">Enter your rate on the left and click Calculate to see the conversion,
+                            mathematical breakdown, and charts.</div>
+                    </div>
+
+                    <div id="resultsContent" class="hidden">
+
+                        <!-- Top Summary Cards -->
+                        <div class="metrics-row" style="grid-template-columns: repeat(2, 1fr);">
+                            <div class="metric-card green animate-up"
+                                style="animation-delay:0.05s; grid-column: span 2;">
+                                <div class="metric-icon">✨</div>
+                                <div class="metric-label" id="lbl-converted">Converted APR</div>
+                                <div class="metric-value green" id="val-converted" style="font-size: 2.5rem;">4.8889%
+                                </div>
+                                <div class="metric-sub" id="sub-converted">Equivalent nominal rate based on Monthly
+                                    compounding</div>
+                            </div>
+
+                            <div class="metric-card blue animate-up" style="animation-delay:0.1s">
+                                <div class="metric-icon">💵</div>
+                                <div class="metric-label">Interest per 1,000</div>
+                                <div class="metric-value blue" id="val-interest">$50.00</div>
+                                <div class="metric-sub">Earned in exactly 1 year</div>
+                            </div>
+
+                            <div class="metric-card purple animate-up" style="animation-delay:0.15s">
+                                <div class="metric-icon">📅</div>
+                                <div class="metric-label">Compounding Periods</div>
+                                <div class="metric-value purple" id="val-periods">12</div>
+                                <div class="metric-sub" id="sub-periods">Periods per year (n)</div>
+                            </div>
+                        </div>
+
+                        <!-- Calculation Breakdown -->
+                        <div class="card animate-up" style="margin-bottom: 1.5rem; animation-delay:0.2s">
+                            <div class="card-header">
+                                <div>
+                                    <div class="card-title">📝 Mathematical Breakdown</div>
+                                    <div class="card-subtitle">Step-by-step formula and calculation</div>
+                                </div>
+                            </div>
+                            <div class="card-body" style="padding: 1.5rem;">
+                                <div class="math-breakdown" id="mathBreakdown"></div>
+                                <div style="margin-top: 1rem; display: flex; justify-content: flex-end;">
+                                    <button class="reset-btn" onclick="copyBreakdown()" type="button"
+                                        style="width: auto; padding: 0.5rem 1rem;">📋 Copy Math</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Charts Row -->
+                        <div class="charts-row animate-up" style="animation-delay:0.25s">
+
+                            <!-- Comparison Table -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <div>
+                                        <div class="card-title">📊 Frequency Comparison</div>
+                                        <div class="card-subtitle" id="tableSub">How compounding frequency affects the
+                                            equivalent APR</div>
+                                    </div>
+                                </div>
+                                <div class="tbl-wrap" style="margin-top: 1rem;">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Frequency</th>
+                                                <th>Periods (n)</th>
+                                                <th id="th-converted">Equivalent APR</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="compTableBody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Chart -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <div>
+                                        <div class="card-title">📈 Rate Divergence</div>
+                                        <div class="card-subtitle" id="chartSub">Equivalent APR across different
+                                            frequencies</div>
+                                    </div>
+                                </div>
+                                <div class="card-body" style="padding: 1.5rem;">
+                                    <div class="chart-canvas" style="height: 300px;">
+                                        <canvas id="rateChart" role="img"
+                                            aria-label="Line chart showing rate divergence"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RELATED CALCULATORS -->
+        <div class="content-section">
+            <h2>🔗 Explore More Calculators</h2>
+            <p>These tools work best together — use them to build your complete financial picture!</p>
+            <div class="links-grid">
+                <a href="https://smartcalcworld.com/finance/finance-sip-calculator.html" class="link-card">
+                    <div class="link-card-icon">📊</div>
+                    <div>
+                        <strong>SIP Calculator</strong>
+                        <p>Project recurring investments and compare the final return with the yield you see here.</p>
+                    </div>
+                </a>
+                <a href="https://smartcalcworld.com/finance/investment/finance-fd-calculator.html" class="link-card">
+                    <div class="link-card-icon">🏦</div>
+                    <div>
+                        <strong>FD Calculator</strong>
+                        <p>Check fixed deposit returns, then compare their effective yield with APY and EAR outcomes.
+                        </p>
+                    </div>
+                </a>
+                <a href="https://smartcalcworld.com/simple-compound-interest-calculator.html" class="link-card">
+                    <div class="link-card-icon">💹</div>
+                    <div>
+                        <strong>Compound Interest Calculator</strong>
+                        <p>Take the rate from this page and turn it into a full long-term compounding projection.</p>
+                    </div>
+                </a>
+                <a href="https://smartcalcworld.com/finance/investment/inflation-calculator.html" class="link-card">
+                    <div class="link-card-icon">📉</div>
+                    <div>
+                        <strong>Inflation Calculator</strong>
+                        <p>Calculate the impact of inflation on your purchasing power and investment returns.</p>
+                    </div>
+                </a>
+                <a href="https://smartcalcworld.com/finance/finance-emi-calculator.html" class="link-card">
+                    <div class="link-card-icon">💳</div>
+                    <div>
+                        <strong>EMI Calculator</strong>
+                        <p>Use APR thinking on the borrowing side to understand the real cost of loans and EMIs.</p>
+                    </div>
+                </a>
+                <a href="https://smartcalcworld.com/finance/investment/cagr-calculator.html" class="link-card">
+                    <div class="link-card-icon">📈</div>
+                    <div>
+                        <strong>CAGR Calculator</strong>
+                        <p>Compare annualized growth with APY to see how steady yield differs from portfolio
+                            performance.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ─── EDUCATIONAL CONTENT ─── -->
+        <section class="content-section">
+            <div class="content-grid">
+
+                <div class="content-main" id="guide">
+                    <h2>Understanding APY vs APR</h2>
+                    <p class="lead-text">Annual Percentage Yield (APY) and Annual Percentage Rate (APR) are both ways to
+                        express interest, but they measure it differently. The entire difference comes down to one word:
+                        <strong>compounding</strong>.
+                    </p>
+
+                    <div class="callout callout-blue">
+                        <strong>⚡ Quick Answer:</strong>
+                        APR is the "sticker price" interest rate. APY is what you actually earn (or pay) once
+                        compounding
+                        is factored in. APY is always equal to or higher than APR — never lower.
+                    </div>
+
+                    <h3>What is APR? (The Nominal Rate)</h3>
+                    <p>APR is the simple, stated interest rate for a full year, <strong>before</strong> compounding is
+                        applied. Think of it as the "sticker price" of interest — a flat, linear number that doesn't
+                        account for interest earning interest along the way. It's also called the Nominal Annual Rate
+                        for
+                        this reason.</p>
+
+                    <h3>What is APY? (The Effective Yield)</h3>
+                    <p>APY is the <strong>real, effective return</strong> you actually get over a year, because it
+                        factors
+                        in compounding. Every time interest is added to your balance, your next round of interest is
+                        calculated on that larger amount too. That snowball effect is why APY is always equal to or
+                        greater than APR — the only time they match exactly is when interest compounds just once a year.
+                    </p>
+
+                    <div
+                        style="background:#fff; padding:1rem 1.25rem; border:1px solid #e2e8f0; border-left: 4px solid var(--slate-400, #94a3b8); border-radius:8px; margin: 1.25rem 0;">
+                        <strong>🧠 Simple Analogy:</strong> Imagine rolling a snowball downhill. APR is how fast it
+                        would
+                        grow if it stayed the same size the whole way down. APY is how fast it actually grows, because
+                        the
+                        snowball picks up more snow as it gets bigger. The more often it "picks up snow" (compounds),
+                        the
+                        bigger the gap between APR and APY.
+                    </div>
+
+                    <div class="callout callout-blue">
+                        <strong>💡 Golden Rule of Finance:</strong>
+                        Banks usually advertise <strong>APY</strong> for Savings Accounts (to make returns look higher)
+                        and <strong>APR</strong> for Mortgages/Loans (to make costs look lower). Always compare
+                        like-for-like
+                        when shopping around.
+                    </div>
+
+                    <h3>How Compounding Frequency Changes the Gap</h3>
+                    <p>The more frequently interest compounds, the bigger the gap between APR and APY. Here's the same
+                        5.00% APR converted to APY at different compounding frequencies:</p>
+
+                    <div style="overflow-x:auto; margin: 1rem 0 1.5rem;">
+                        <table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+                            <thead>
+                                <tr style="background:var(--slate-50, #f8fafc); text-align:left;">
+                                    <th style="padding:0.6rem 0.75rem; border-bottom:2px solid #4973aa;">Compounding
+                                    </th>
+                                    <th style="padding:0.6rem 0.75rem; border-bottom:2px solid #4973aa;">n
+                                        (periods/year)</th>
+                                    <th style="padding:0.6rem 0.75rem; border-bottom:2px solid #4973aa;">5.00% APR
+                                        becomes...</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding:0.6rem 0.75rem; border-bottom:1px solid #eef2f7;">Annually</td>
+                                    <td style="padding:0.6rem 0.75rem; border-bottom:1px solid #eef2f7;">1</td>
+                                    <td style="padding:0.6rem 0.75rem; border-bottom:1px solid #eef2f7;">5.00% APY</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:0.6rem 0.75rem; border-bottom:1px solid #eef2f7;">Quarterly</td>
+                                    <td style="padding:0.6rem 0.75rem; border-bottom:1px solid #eef2f7;">4</td>
+                                    <td style="padding:0.6rem 0.75rem; border-bottom:1px solid #eef2f7;">5.09% APY</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:0.6rem 0.75rem; border-bottom:1px solid #eef2f7;">Monthly</td>
+                                    <td style="padding:0.6rem 0.75rem; border-bottom:1px solid #eef2f7;">12</td>
+                                    <td style="padding:0.6rem 0.75rem; border-bottom:1px solid #eef2f7;">5.12% APY</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:0.6rem 0.75rem; border-bottom:1px solid #eef2f7;">Weekly</td>
+                                    <td style="padding:0.6rem 0.75rem; border-bottom:1px solid #eef2f7;">52</td>
+                                    <td style="padding:0.6rem 0.75rem; border-bottom:1px solid #eef2f7;">5.126% APY</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:0.6rem 0.75rem;">Daily</td>
+                                    <td style="padding:0.6rem 0.75rem;">365</td>
+                                    <td style="padding:0.6rem 0.75rem;">5.127% APY</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:0.9rem; color:var(--slate-600, #475569);">Notice how the gap grows quickly at
+                        first, then barely moves once you're compounding weekly vs. daily. Diminishing returns kick in
+                        fast.</p>
+
+                    <h3>Real World Examples 🏦</h3>
+
+                    <h4>Example 1: Savings Account (APR → APY)</h4>
+                    <p>You open a high-yield savings account that states an APR of 4.50%, compounded daily (365 times a
+                        year). What is your actual yield?</p>
+                    <p>Using the converter: <strong>4.50% APR = 4.60% APY</strong>.<br>You will actually earn $46.02 on
+                        a $1,000 deposit over the year, not $45.00.</p>
+
+                    <h4>Example 2: Crypto Staking (APY → APR)</h4>
+                    <p>A crypto platform advertises an attractive 12.00% APY for staking a coin, with rewards paid out
+                        and compounded weekly. To compare this with a traditional bond, you want the simple APR.</p>
+                    <p>Using the converter: <strong>12.00% APY = 11.35% APR</strong>.</p>
+
+                    <h4>Example 3: Credit Card (Why APR Matters for Debt)</h4>
+                    <p>A credit card advertises 24% APR, compounded daily. That sounds like "24% a year," but because
+                        interest compounds daily on any unpaid balance, your real cost — the APY — works out closer to
+                        27.1%. This is exactly why carrying a balance is more expensive than the advertised rate
+                        suggests.</p>
+
+                    <h3>Common Doubts, Cleared Up ❓</h3>
+
+                    <div style="margin-top:1rem;">
+                        <p><strong>Q: Is a higher APY always better?</strong><br>
+                            If you're the one earning interest (savings, staking, investing) — yes, higher APY means
+                            more
+                            money for you. If you're the one paying interest (loans, credit cards) — you want the lower
+                            rate,
+                            so a low APY/APR is better for you there.</p>
+
+                        <p><strong>Q: Can APR and APY ever be equal?</strong><br>
+                            Yes — only when interest compounds exactly once per year (n = 1). In every other case, APY
+                            will be
+                            slightly higher than APR.</p>
+
+                        <p><strong>Q: Why do two accounts with the same APR have different APYs?</strong><br>
+                            Because compounding frequency differs. An account compounding daily will always produce a
+                            higher
+                            APY than one compounding monthly or quarterly, even with an identical APR.</p>
+
+                        <p><strong>Q: Which number should I look at when comparing offers?</strong><br>
+                            Always compare APY to APY, or APR to APR — never mix the two. If one bank shows APY and
+                            another
+                            shows APR, convert one so you're comparing apples to apples. That's exactly what this
+                            calculator
+                            is for.</p>
+
+                        <p><strong>Q: Does APY account for fees?</strong><br>
+                            No. APY only reflects the effect of compounding on the stated rate. Account fees, minimum
+                            balance
+                            penalties, or early withdrawal charges are separate and can eat into your real return even
+                            if the
+                            APY looks attractive.</p>
+                    </div>
+                </div>
+
+                <div class="content-sidebar">
+                    <div class="card bg-slate-50 border-slate-200"
+                        style="padding:1.5rem; background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md);">
+                        <h3 style="font-size:1.1rem; margin-bottom:1rem;">Formula Cheat Sheet</h3>
+                        <div>
+                            <strong style="display:block; margin-bottom:0.25rem;">APY to APR Formula</strong>
+                            <div
+                                style="background:#fff; padding:0.75rem; border:1px solid #e2e8f0; border-radius:8px; font-family:monospace; margin-bottom:1rem;">
+                                APR = n × ((1 + APY)<sup>1/n</sup> − 1)
+                            </div>
+                        </div>
+                        <div>
+                            <strong style="display:block; margin-bottom:0.25rem;">APR to APY Formula</strong>
+                            <div
+                                style="background:#fff; padding:0.75rem; border:1px solid #e2e8f0; border-radius:8px; font-family:monospace; margin-bottom:1rem;">
+                                APY = (1 + APR/n)<sup>n</sup> − 1
+                            </div>
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <strong style="display:block; margin-bottom:0.25rem;">Variables</strong>
+                            <ul style="list-style:none; padding-left:0; font-size:0.9rem; color:var(--slate-600);">
+                                <li><strong>n:</strong> Number of compounding periods per year</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong style="display:block; margin-bottom:0.5rem;">n by Frequency</strong>
+                            <ul
+                                style="list-style:none; padding-left:0; font-size:0.85rem; color:var(--slate-600); line-height:1.7;">
+                                <li>Annually → n = 1</li>
+                                <li>Semi-Annually → n = 2</li>
+                                <li>Quarterly → n = 4</li>
+                                <li>Monthly → n = 12</li>
+                                <li>Weekly → n = 52</li>
+                                <li>Daily → n = 365</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── FAQ ─── -->
+        <section class="faq-section" id="faq">
+            <div class="faq-inner">
+                <h2 class="faq-heading">Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3 class="faq-q">Are APY and Effective Annual Rate (EAR) the same?</h3>
+                        <p class="faq-a">Yes. In finance, APY (Annual Percentage Yield) and EAR (Effective Annual Rate)
+                            are identical concepts. Both represent the true annualized return after compounding.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-q">Can APY be lower than APR?</h3>
+                        <p class="faq-a">No. APY is mathematically impossible to be lower than APR. At minimum, if
+                            compounding happens only once a year (Annually), APY equals APR. If compounding occurs more
+                            frequently, APY will always be strictly greater than APR.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-q">Why does daily compounding barely differ from monthly?</h3>
+                        <p class="faq-a">As the frequency (n) increases towards infinity (continuous compounding), the
+                            return approaches a mathematical limit. The leap from Annual (1) to Monthly (12) is
+                            significant, but the leap from Monthly (12) to Daily (365) yields sharply diminishing
+                            returns.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-q">What is continuous compounding?</h3>
+                        <p class="faq-a">Continuous compounding assumes interest is calculated and added
+                            instantaneously, an infinite number of times per year. The formula uses the mathematical
+                            constant 'e': APY = e^(APR) - 1.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-q">Which is better for a loan: high APR or low APY?</h3>
+                        <p class="faq-a">For any debt (loans, credit cards), you want the lowest possible rate. Always
+                            compare the APRs of loans, as lending laws require lenders to disclose the standard APR.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-q">How do I convert a monthly interest rate to APY?</h3>
+                        <p class="faq-a">Multiply your monthly rate by 12 to get the APR. Then, use our APR to APY
+                            converter, select "Monthly" compounding, and you'll get the exact APY.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- DISCLAIMER -->
+        <div class="disclaimer">
+            <strong>⚠️ Disclaimer:</strong> This calculator is for educational and informational purposes only. Results
+            are mathematical estimates based on inputs provided. Actual investment returns depend on many factors
+            including market conditions, fees, taxes, and specific product terms. This is not financial advice. Please
+            consult a qualified financial advisor before making investment decisions.
+        </div>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="footer-logo">💰 SmartCalc World</div>
+                    <p style="font-size:0.82rem; line-height:1.5; color:var(--slate-400);">Free financial calculators
+                        for investment, loans, savings, and long-term planning. Plan your financial journey with
+                        precision.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="https://smartcalcworld.com/index.html">Home</a></li>
+                        <li><a href="https://smartcalcworld.com/about.html">About</a></li>
+                        <li><a href="https://smartcalcworld.com/contact.html">Contact</a></li>
+                        <li><a href="https://smartcalcworld.com/privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Content</h3>
+                    <ul>
+                        <li><a href="#calcForm">APY Converter</a></li>
+                        <li><a href="/finance/investment/apy-calculator.html">APY Calculator</a></li>
+                        <li><a href="#guide">APY Guide</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Student Tools</h3>
+                    <ul>
+                        <li><a href="https://smartcalcworld.com/percentage-calculator.html">Percentage</a></li>
+                        <li><a href="https://smartcalcworld.com/cgpa-calculator.html">CGPA</a></li>
+                        <li><a href="https://smartcalcworld.com/simple-compound-interest-calculator.html">Compound
+                                Interest</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Finance Tools</h3>
+                    <ul>
+                        <li><a href="https://smartcalcworld.com/finance/interest/interest-hub.html">Interest Hub</a>
+                        </li>
+                        <li><a href="https://smartcalcworld.com/finance/investment/investment-hub.html">Investment
+                                Hub</a></li>
+                        <li><a href="https://smartcalcworld.com/finance/loan/loan-hub.html">Loan Hub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-disclaimer">
+                <strong>SmartCalc World Note:</strong> APY, APR, and EAR are excellent comparison tools, but your
+                final decision should also consider fees, taxes, liquidity, inflation, and product-specific terms.
+            </div>
+            <div class="copyright-row">
+                <p>&copy; <span id="copyrightYear">2026</span> SmartCalc World. All rights reserved.</p>
+                <p>Designed for Smart Calculator Ecosystem</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ══════════════════════════════════════════
+     JAVASCRIPT LOGIC
+    ══════════════════════════════════════════ -->
+    <script>
+        // ── STATE ──
+        const CURRENCIES = {
+            USD: { symbol: '$', flag: '🇺🇸' },
+            INR: { symbol: '₹', flag: '🇮🇳' },
+            EUR: { symbol: '€', flag: '🇪🇺' },
+            GBP: { symbol: '£', flag: '🇬🇧' },
+            CAD: { symbol: 'CA$', flag: '🇨🇦' },
+            AUD: { symbol: 'A$', flag: '🇦🇺' }
+        };
+
+        let currentMode = 'apyToApr'; // 'apyToApr' | 'aprToApy'
+        let currentCurrency = 'USD';
+        let chartInst = null;
+        let lastResults = null;
+
+        const FREQ_MAP = {
+            '365': 'Daily',
+            '52': 'Weekly',
+            '26': 'Bi-Weekly',
+            '12': 'Monthly',
+            '4': 'Quarterly',
+            '2': 'Semi-Annually',
+            '1': 'Annually'
+        };
+
+        const STANDARD_FREQS = [1, 2, 4, 12, 26, 52, 365];
+
+        // ── INIT ──
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+
+            // Bind Enter key to calculate
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') triggerCalculate();
+                if (e.key === 'Escape') resetForm();
+            });
+
+            // Mobile Menu
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileNav = document.getElementById('mobileNav');
+            if (hamburgerBtn) {
+                hamburgerBtn.addEventListener('click', () => {
+                    const isExpanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+                    hamburgerBtn.setAttribute('aria-expanded', !isExpanded);
+                    if (mobileNav) mobileNav.classList.toggle('active');
+                });
+            }
+
+            // FAQ Toggle
+            document.querySelectorAll('.faq-q').forEach(q => {
+                q.addEventListener('click', () => {
+                    const ans = q.nextElementSibling;
+                    const isVisible = ans.style.display === 'block';
+                    document.querySelectorAll('.faq-a').forEach(a => a.style.display = 'none');
+                    if (!isVisible) {
+                        ans.style.display = 'block';
+                    }
+                });
+            });
+        });
+
+        // ── UI HANDLERS ──
+        function setMode(mode) {
+            if (currentMode === mode) return;
+            currentMode = mode;
+
+            document.getElementById('modeApyToApr').classList.toggle('active', mode === 'apyToApr');
+            document.getElementById('modeAprToApy').classList.toggle('active', mode === 'aprToApy');
+
+            // Update labels and tooltips
+            if (mode === 'apyToApr') {
+                document.getElementById('rateLabel').textContent = 'APY (%)';
+                document.getElementById('rateTip').title = 'The Annual Percentage Yield';
+                document.getElementById('calcBtn').innerHTML = '<span>⚡</span> Convert to APR';
+                document.getElementById('lbl-converted').textContent = 'Converted APR';
+                document.getElementById('th-converted').textContent = 'Equivalent APR';
+                document.getElementById('chartSub').textContent = 'Equivalent APR across different frequencies';
+                document.getElementById('tableSub').textContent = 'How compounding frequency affects the equivalent APR';
+            } else {
+                document.getElementById('rateLabel').textContent = 'APR (%)';
+                document.getElementById('rateTip').title = 'The Annual Percentage Rate (Nominal)';
+                document.getElementById('calcBtn').innerHTML = '<span>⚡</span> Convert to APY';
+                document.getElementById('lbl-converted').textContent = 'Converted APY';
+                document.getElementById('th-converted').textContent = 'Equivalent APY';
+                document.getElementById('chartSub').textContent = 'Equivalent APY across different frequencies';
+                document.getElementById('tableSub').textContent = 'How compounding frequency affects the equivalent APY';
+            }
+
+            // Clear results
+            hideResults();
+        }
+
+        function updateCurrency() {
+            currentCurrency = document.getElementById('currencySelect').value;
+            const { symbol, flag } = CURRENCIES[currentCurrency];
+            document.getElementById('currencyFlag').textContent = flag;
+            if (lastResults) renderResults(lastResults);
+        }
+
+        function checkCustomFreq() {
+            const freq = document.getElementById('compFreq').value;
+            const group = document.getElementById('group-customFreq');
+            if (freq === 'custom') {
+                group.classList.remove('hidden');
+            } else {
+                group.classList.add('hidden');
+            }
+        }
+
+        function swapConversion() {
+            const inputField = document.getElementById('inputRate');
+            if (lastResults && lastResults.convertedRate !== undefined) {
+                inputField.value = lastResults.convertedRate.toFixed(parseInt(document.getElementById('outputPrecision').value));
+            }
+            setMode(currentMode === 'apyToApr' ? 'aprToApy' : 'apyToApr');
+            if (lastResults) {
+                triggerCalculate();
+            }
+        }
+
+        function showBanner(msg, type) {
+            const banner = document.getElementById('statusBanner');
+            if (!banner) return alert(msg);
+            banner.className = 'status-banner show ' + type;
+            banner.innerHTML = type === 'error' ? '⚠️ ' + msg : '✅ ' + msg;
+            setTimeout(() => { banner.classList.remove('show'); }, 4000);
+        }
+
+        // ── CALCULATE LOGIC ──
+        function triggerCalculate() {
+            let rateStr = document.getElementById('inputRate').value;
+            let rate = parseFloat(rateStr);
+
+            let freqVal = document.getElementById('compFreq').value;
+            let n = freqVal === 'custom' ? parseFloat(document.getElementById('customFreqInput').value) : parseFloat(freqVal);
+
+            let precision = parseInt(document.getElementById('outputPrecision').value);
+
+            // Validation
+            if (isNaN(rate) || rate < 0 || rate > 10000) {
+                return showBanner("Please enter a valid positive interest rate.", "error");
+            }
+            if (isNaN(n) || n < 1 || !Number.isInteger(n)) {
+                return showBanner("Compounding frequency must be an integer of 1 or greater.", "error");
+            }
+
+            let convertedRate, breakdownHtml, formulaStr;
+            const decimalRate = rate / 100;
+
+            if (currentMode === 'apyToApr') {
+                // APY -> APR: APR = n * ((1 + APY)^(1/n) - 1)
+                convertedRate = n * (Math.pow(1 + decimalRate, 1 / n) - 1);
+
+                formulaStr = `APR = n × ((1 + APY)<sup>1/n</sup> − 1)`;
+                breakdownHtml = `
+                    <div class="formula">${formulaStr}</div>
+                    <div class="step">1. Convert APY to decimal: ${rate.toFixed(4)}% = <strong>${decimalRate.toFixed(6)}</strong></div>
+                    <div class="step">2. Substitute: APR = ${n} × ((1 + ${decimalRate.toFixed(6)})<sup>1/${n}</sup> − 1)</div>
+                    <div class="step">3. Add 1: APR = ${n} × (<strong>${(1 + decimalRate).toFixed(6)}</strong><sup>${(1 / n).toFixed(6)}</sup> − 1)</div>
+                    <div class="step">4. Exponentiate: APR = ${n} × (<strong>${Math.pow(1 + decimalRate, 1 / n).toFixed(8)}</strong> − 1)</div>
+                    <div class="step">5. Subtract 1: APR = ${n} × <strong>${(Math.pow(1 + decimalRate, 1 / n) - 1).toFixed(8)}</strong></div>
+                    <div class="step">6. Multiply by n (${n}): APR = <strong>${convertedRate.toFixed(8)}</strong></div>
+                    <div class="step">7. Convert to percentage: <strong>${(convertedRate * 100).toFixed(precision)}%</strong></div>
+                `;
+            } else {
+                // APR -> APY: APY = (1 + APR/n)^n - 1
+                convertedRate = Math.pow(1 + decimalRate / n, n) - 1;
+
+                formulaStr = `APY = (1 + APR/n)<sup>n</sup> − 1`;
+                breakdownHtml = `
+                    <div class="formula">${formulaStr}</div>
+                    <div class="step">1. Convert APR to decimal: ${rate.toFixed(4)}% = <strong>${decimalRate.toFixed(6)}</strong></div>
+                    <div class="step">2. Substitute: APY = (1 + ${decimalRate.toFixed(6)} / ${n})<sup>${n}</sup> − 1</div>
+                    <div class="step">3. Divide by n: APY = (1 + <strong>${(decimalRate / n).toFixed(8)}</strong>)<sup>${n}</sup> − 1</div>
+                    <div class="step">4. Add 1: APY = <strong>${(1 + decimalRate / n).toFixed(8)}</strong><sup>${n}</sup> − 1</div>
+                    <div class="step">5. Exponentiate: APY = <strong>${Math.pow(1 + decimalRate / n, n).toFixed(8)}</strong> − 1</div>
+                    <div class="step">6. Subtract 1: APY = <strong>${convertedRate.toFixed(8)}</strong></div>
+                    <div class="step">7. Convert to percentage: <strong>${(convertedRate * 100).toFixed(precision)}%</strong></div>
+                `;
+            }
+
+            const convertedRatePct = convertedRate * 100;
+
+            // Always use Effective Rate (APY) for interest calculation
+            let effectiveRateDec = currentMode === 'aprToApy' ? convertedRate : decimalRate;
+            let interestPer1k = 1000 * effectiveRateDec;
+
+            lastResults = {
+                mode: currentMode,
+                inputRate: rate,
+                n: n,
+                precision: precision,
+                convertedRate: convertedRatePct,
+                effectiveRate: effectiveRateDec * 100,
+                nominalRate: (currentMode === 'apyToApr' ? convertedRatePct : rate),
+                interestPer1k: interestPer1k,
+                breakdownHtml: breakdownHtml
+            };
+
+            renderResults(lastResults);
+            renderTableAndChart(rate, n, precision);
+        }
+
+        function renderResults(res) {
+            document.getElementById('emptyState').classList.add('hidden');
+            document.getElementById('resultsContent').classList.remove('hidden');
+
+            const sym = CURRENCIES[currentCurrency].symbol;
+
+            document.getElementById('val-converted').textContent = res.convertedRate.toFixed(res.precision) + '%';
+            document.getElementById('sub-converted').textContent = `Equivalent ${res.mode === 'apyToApr' ? 'nominal' : 'effective'} rate based on ${res.n === 365 ? 'Daily' : res.n === 12 ? 'Monthly' : res.n + ' periods/yr'} compounding`;
+
+            document.getElementById('val-interest').textContent = sym + res.interestPer1k.toFixed(2);
+
+            document.getElementById('val-periods').textContent = res.n;
+            document.getElementById('sub-periods').textContent = `Periods per year (n)`;
+
+            document.getElementById('mathBreakdown').innerHTML = res.breakdownHtml;
+        }
+
+        function renderTableAndChart(inputRate, selectedN, precision) {
+            const tbody = document.getElementById('compTableBody');
+            tbody.innerHTML = '';
+
+            let chartLabels = [];
+            let chartData = [];
+
+            const decimalRate = inputRate / 100;
+
+            let freqsToCalc = [...STANDARD_FREQS];
+            if (!freqsToCalc.includes(selectedN)) {
+                freqsToCalc.push(selectedN);
+                freqsToCalc.sort((a, b) => a - b);
+            }
+
+            freqsToCalc.forEach(n => {
+                let label = FREQ_MAP[n] || `Custom (${n}/yr)`;
+                let equivRate;
+
+                if (currentMode === 'apyToApr') {
+                    equivRate = n * (Math.pow(1 + decimalRate, 1 / n) - 1) * 100;
+                } else {
+                    equivRate = (Math.pow(1 + decimalRate / n, n) - 1) * 100;
+                }
+
+                let isSelected = (n === selectedN);
+
+                let row = document.createElement('tr');
+                if (isSelected) row.style.background = 'var(--blue-50)';
+
+                row.innerHTML = `
+                    <td>${isSelected ? '<strong>' + label + '</strong>' : label}</td>
+                    <td>${n}</td>
+                    <td><strong>${equivRate.toFixed(precision)}%</strong></td>
+                `;
+                tbody.appendChild(row);
+
+                chartLabels.push(label);
+                chartData.push(equivRate.toFixed(precision));
+            });
+
+            renderChart(chartLabels, chartData);
+        }
+
+        function renderChart(labels, data) {
+            const ctx = document.getElementById('rateChart').getContext('2d');
+            if (chartInst) chartInst.destroy();
+
+            const isApyToApr = currentMode === 'apyToApr';
+            const color = isApyToApr ? '#f59e0b' : '#2563eb'; // Gold for APR going down, Blue for APY going up
+
+            chartInst = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: isApyToApr ? 'Equivalent APR (%)' : 'Equivalent APY (%)',
+                        data: data,
+                        borderColor: color,
+                        backgroundColor: color + '22',
+                        borderWidth: 3,
+                        tension: 0.3,
+                        pointBackgroundColor: color,
+                        pointRadius: 5,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.raw}%` }
+                        }
+                    },
+                    scales: {
+                        x: { grid: { display: false } },
+                        y: {
+                            grid: { color: 'rgba(148,163,184,0.1)' },
+                            ticks: { callback: v => v + '%' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function resetForm() {
+            document.getElementById('inputRate').value = '5.00';
+            document.getElementById('compFreq').value = '12';
+            document.getElementById('customFreqInput').value = '365';
+            document.getElementById('outputPrecision').value = '4';
+            checkCustomFreq();
+            hideResults();
+        }
+
+        function hideResults() {
+            document.getElementById('emptyState').classList.remove('hidden');
+            document.getElementById('resultsContent').classList.add('hidden');
+            lastResults = null;
+        }
+
+        function copyBreakdown() {
+            const text = document.getElementById('mathBreakdown').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                showBanner("Mathematical breakdown copied!", "success");
+            }).catch(() => {
+                showBanner("Failed to copy. Please copy manually.", "error");
+            });
+        }
+    </script>
+
+</body>
+
+</html>
